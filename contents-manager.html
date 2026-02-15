@@ -29,6 +29,11 @@
         .token-note { font-size: 0.8rem; color: #64748b; margin-top: 8px; }
         .locations-list { margin-top: 8px; }
         .locations-list label { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; margin-bottom: 8px; }
+        .image-slot { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .image-slot .thumb { width: 80px; height: 56px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); }
+        .image-slot .actions { display: flex; flex-direction: column; gap: 6px; }
+        .image-slot input[type="file"] { display: none; }
+        .image-slot .btn-small { padding: 6px 12px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -65,6 +70,12 @@
                 <input type="password" id="githubToken" placeholder="ghp_xxxx...（任意）" autocomplete="off" />
                 <p class="token-note">トークンはこの画面でのみ使用し、保存されません。入力しなくても「JSONをダウンロード」で反映可能です。</p>
             </div>
+        </div>
+
+        <div class="card">
+            <h2>画像の差し替え</h2>
+            <p class="token-note" style="margin-bottom:16px;">ファイル名は気にしなくてOKです。画像を選ぶとその場で上書きされます。JPG/PNG/GIF（推奨5MB以下）</p>
+            <div id="imageSlots"></div>
         </div>
 
         <div class="card">
@@ -193,6 +204,21 @@
             var currentDataPath = 'data/main.json';
             var currentData = null;
 
+            var IMAGE_SLOTS = [
+                { key: 'images.heroBg', label: 'ヒーロー背景' },
+                { key: 'images.weeklyMon', label: '週次MTG（月）' },
+                { key: 'images.weeklyTue', label: '戦略会議（火）' },
+                { key: 'images.weeklyWed', label: '営業中（水）' },
+                { key: 'images.weeklyThu', label: '研修風景（木）' },
+                { key: 'images.weeklyFri', label: '商談同行（金）' },
+                { key: 'images.weeklyFriNight', label: '打ち上げ（金夜）' },
+                { key: 'images.storyMain', label: 'ストーリー顔写真' },
+                { key: 'images.locationTokyo', label: '東京拠点写真' },
+                { key: 'images.locationNagoya', label: '名古屋拠点写真' },
+                { key: 'images.locationNiigata', label: '新潟拠点写真' },
+                { key: 'images.locationFukuoka', label: '福岡拠点写真' }
+            ];
+
             function getByPath(obj, path) {
                 return path.split('.').reduce(function (o, k) {
                     return o && o[k] !== undefined ? o[k] : null;
@@ -221,6 +247,82 @@
                         el.value = String(val);
                     }
                 });
+                renderImageSlots(data);
+            }
+
+            function renderImageSlots(data) {
+                var container = document.getElementById('imageSlots');
+                if (!container) return;
+                if (currentData && !currentData.images) currentData.images = (data && data.images) ? JSON.parse(JSON.stringify(data.images)) : {};
+                container.innerHTML = '';
+                IMAGE_SLOTS.forEach(function (slot) {
+                    var val = getByPath(data, slot.key) || '';
+                    var wrap = document.createElement('div');
+                    wrap.className = 'image-slot';
+                    var label = document.createElement('label');
+                    label.style.cssText = 'width:100%; margin-bottom:4px;';
+                    label.textContent = slot.label;
+                    var inner = document.createElement('div');
+                    inner.style.cssText = 'display:flex; align-items:flex-start; gap:12px;';
+                    var thumb = document.createElement('img');
+                    thumb.className = 'thumb';
+                    thumb.alt = '';
+                    if (val && (val.startsWith('data:') || val.startsWith('http'))) {
+                        thumb.src = val;
+                    } else {
+                        thumb.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="56" viewBox="0 0 80 56"><rect fill="%23333" width="80" height="56"/><text x="50%" y="50%" fill="%23666" font-size="10" text-anchor="middle" dy=".3em">未設定</text></svg>');
+                    }
+                    var actions = document.createElement('div');
+                    actions.className = 'actions';
+                    var fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = 'image/jpeg,image/png,image/gif,image/webp';
+                    fileInput.addEventListener('change', function () {
+                        var file = fileInput.files && fileInput.files[0];
+                        if (!file) return;
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert('ファイルは5MB以下にしてください');
+                            return;
+                        }
+                        if (!file.type.startsWith('image/')) {
+                            alert('画像ファイルを選択してください');
+                            return;
+                        }
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var dataUrl = e.target && e.target.result;
+                            if (!dataUrl) return;
+                            if (!currentData.images) currentData.images = {};
+                            setByPath(currentData, slot.key, dataUrl);
+                            thumb.src = dataUrl;
+                            fileInput.value = '';
+                            btn.textContent = '画像を変更';
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-secondary btn-small';
+                    btn.textContent = val ? '画像を変更' : '画像を選択';
+                    btn.addEventListener('click', function () { fileInput.click(); });
+                    var clearBtn = document.createElement('button');
+                    clearBtn.type = 'button';
+                    clearBtn.className = 'btn btn-secondary btn-small';
+                    clearBtn.textContent = 'クリア';
+                    clearBtn.addEventListener('click', function () {
+                        setByPath(currentData, slot.key, '');
+                        thumb.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="56" viewBox="0 0 80 56"><rect fill="%23333" width="80" height="56"/><text x="50%" y="50%" fill="%23666" font-size="10" text-anchor="middle" dy=".3em">未設定</text></svg>');
+                        btn.textContent = '画像を選択';
+                    });
+                    actions.appendChild(btn);
+                    actions.appendChild(clearBtn);
+                    inner.appendChild(thumb);
+                    inner.appendChild(actions);
+                    wrap.appendChild(label);
+                    wrap.appendChild(inner);
+                    wrap.appendChild(fileInput);
+                    container.appendChild(wrap);
+                });
             }
 
             function collectForm() {
@@ -234,6 +336,7 @@
                         setByPath(data, key, val);
                     }
                 });
+                if (currentData && currentData.images) data.images = currentData.images;
                 return data;
             }
 
@@ -279,7 +382,8 @@
 
                 loadData(currentDataPath).then(renderForm).catch(function () {
                     renderForm({
-                        hero: { catchcopy: '', subtext: '', ctaPrimary: '', ctaSecondary: '' },
+                        hero: { catchcopy: '', subtext: '', ctaPrimary: '', ctaSecondary: '', heroBg: '' },
+                        images: { heroBg: '', weeklyMon: '', weeklyTue: '', weeklyWed: '', weeklyThu: '', weeklyFri: '', weeklyFriNight: '', storyMain: '', locationTokyo: '', locationNagoya: '', locationNiigata: '', locationFukuoka: '' },
                         marquee: { stats: [] },
                         cta: { title: '', description: '', lineLabel: '', lineUrl: '#', footnote: '' },
                         footer: { description: '', copyright: '', locations: [] }

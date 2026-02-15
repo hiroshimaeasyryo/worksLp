@@ -5,12 +5,22 @@
     "ctaPrimary": "説明会に参加する",
     "ctaSecondary": "詳しく見る"
   },
+  "images": {
+    "heroBg": "",
+    "weeklyMon": "",
+    "weeklyTue": "",
+    "weeklyWed": "",
+    "weeklyThu": "",
+    "weeklyFri": "",
+    "weeklyFriNight": "",
+    "storyMain": "",
+    "locationTokyo": "",
+    "locationNagoya": "",
+    "locationNiigata": "",
+    "locationFukuoka": ""
+  },
   "marquee": {
-    "stats": [
-      "300+ 成長した先輩たち",
-      "4拠点で展開中",
-      "毎月3名限定募集"
-    ]
+    "stats": ["300+ 成長した先輩たち", "4拠点で展開中", "毎月3名限定募集"]
   },
   "cta": {
     "title": "まずは説明会で、話を聞いてみませんか?",

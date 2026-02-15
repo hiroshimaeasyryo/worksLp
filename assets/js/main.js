@@ -15,6 +15,29 @@
             const key = el.getAttribute('data-content');
             const val = getByPath(data, key);
             if (val == null) return;
+            // 画像用: images.xxx の場合は Data URL で img を表示
+            if (key && key.startsWith('images.')) {
+                var inner = el.querySelector('.photo-placeholder-inner');
+                if (inner) {
+                    if (val && typeof val === 'string' && (val.startsWith('data:') || val.startsWith('http'))) {
+                        inner.style.display = 'none';
+                        var img = el.querySelector('img.photo-content-img');
+                        if (!img) {
+                            img = document.createElement('img');
+                            img.className = 'photo-content-img';
+                            img.setAttribute('alt', '');
+                            el.insertBefore(img, inner);
+                        }
+                        img.src = val;
+                        img.style.display = '';
+                    } else {
+                        var img = el.querySelector('img.photo-content-img');
+                        if (img) img.style.display = 'none';
+                        inner.style.display = '';
+                    }
+                }
+                return;
+            }
             const useBr = el.hasAttribute('data-content-br');
             const hrefKey = el.getAttribute('data-content-href');
             if (hrefKey) {
