@@ -1,5 +1,7 @@
 {
-  "owner": "",
-  "repo": "",
-  "branch": "main"
+  "owner": "hiroshimaeasyryo",
+  "repo": "worksLp",
+  "branch": "main",
+  "saveApiUrl": "https://asia-northeast1-amazing-centaur-468005-b0.cloudfunctions.net/saveContent",
+  "saveApiSecret": "a69cae941bded8c62f89df6cb74375675126d8a8ade9e2ba"
 }

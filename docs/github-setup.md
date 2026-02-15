@@ -36,6 +36,18 @@ contents-manager の「保存してデプロイ」は、**GitHub API で `data/m
     `<meta name="github-repo" content="owner/repo">`  
     を追加する。
 
+#### public リポジトリで `data/repo-config.json` を commit したくない場合
+
+- `data/repo-config.json` は **.gitignore に含まれており**、リポジトリには含めません（`saveApiSecret` などを公開しないため）。
+- 代わりに、**GitHub の Actions Secrets** に設定を渡し、デプロイ時にだけ `data/repo-config.json` を生成します。
+  1. リポジトリの **Settings** → **Secrets and variables** → **Actions** を開く。
+  2. **New repository secret** で、名前を **`REPO_CONFIG_JSON_B64`** にする。
+  3. 値には、**`data/repo-config.json` の中身（JSON 全体）を base64 にした文字列**を入れる。  
+     例（ターミナルで作成）:  
+     `echo -n '{"owner":"hiroshimaeasyryo","repo":"worksLp","branch":"main","saveApiUrl":"https://...","saveApiSecret":"あなたの共有シークレット"}' | base64`
+  4. 表示された 1 行をコピーし、Secret の値として貼り付けて保存する。
+- これで、push のたびにワークフローが Secret をデコードして `_site/data/repo-config.json` を生成し、本番サイトだけに設定が渡ります。
+
 ### 2.2 GitHub Personal Access Token（PAT）の作成
 
 ブラウザから GitHub API でファイルを更新するには、**Personal Access Token** が必要です。
@@ -49,6 +61,41 @@ contents-manager の「保存してデプロイ」は、**GitHub API で `data/m
    - トークンはこのページの入力欄でのみ使用され、保存・送信先には送りません（他サイトに送らないよう注意）。
 
 **注意**: 共有PCではトークンを入力しない・使い終わったら欄を空にするなど、取り扱いに注意してください。
+
+---
+
+## 2.3 PAT を非エンジニアに入力させない方法（推奨）
+
+非エンジニアに GitHub PAT を入力させるのはハードルが高いため、次のいずれかの運用を推奨します。
+
+### 方法1: JSON をダウンロードして担当者に渡す（トークン不要・追加設定なし）
+
+- 編集者は contents-manager で文言を変え、**「JSONをダウンロード（担当者に渡す・トークン不要）」** を押す。
+- ダウンロードした JSON ファイル（例: `main.json`）を Slack・メール等で担当者（エンジニア）に渡す。
+- 担当者がそのファイルを `data/main.json`（または該当する `data/locations/〇〇.json`）に上書きして commit・push する。
+- push で GitHub Actions が走り、数分でサイトに反映される。
+
+**メリット**: トークン不要・追加の仕組み不要。  
+**デメリット**: 反映のたびに担当者による commit が必要。
+
+### 方法2: サーバーレス経由でトークンを「預ける」（1回だけ設定）
+
+- **GitHub Actions の Secrets** は、ワークフローが**実行されている runner のなか**でしか参照できません。ブラウザからは参照できないため、「Secrets に PAT を入れておいて contents-manager から使う」ことはそのままではできません。
+- 代わりに、**小さな API（サーバーレス関数）** を 1 回だけ用意し、そこに PAT を環境変数で設定する方法があります。
+  1. 自社環境に合わせたサーバーレスに、「リクエストを受け取り、アクセスコードを確認してから GitHub API でファイルを更新する」関数をデプロイする。  
+     **GCP**（Cloud Functions）／Vercel／Netlify／Cloudflare Workers などで同じ構成が可能。自社で GCP を使う場合は [save-api-example.md の GCP の節](./save-api-example.md#例-google-cloud-functions) を参照。
+  2. そのサービス側の **環境変数** に `GITHUB_TOKEN`（PAT）を設定する（GitHub の Actions Secrets ではなく、各クラウドの環境変数または Secret Manager）。
+  3. contents-manager の `data/repo-config.json` に **saveApiUrl** と **saveApiSecret** を設定し、「保存してデプロイ」がその API に POST する形にする。
+  4. 編集者は**アクセスコードだけ**で入室し、保存時もトークン入力は不要。PAT はサーバー側にだけ存在する。
+
+**メリット**: 非エンジニアはトークンを一切触らない。  
+**デメリット**: API のデプロイと環境変数の初期設定が 1 回必要。  
+詳細なサンプル（Vercel・**GCP Cloud Functions**）は [docs/save-api-example.md](./save-api-example.md) を参照してください。
+
+### 方法3: GitHub Actions Secrets について
+
+- **Actions の Secrets** は「ワークフロー実行時に runner から参照する」ためのものです。ブラウザで開いている contents-manager からは参照できません。
+- そのため、「PAT を Secrets に置いて、非エンジニアの入力を省く」には、上記の**サーバーレス API 経由**で、その API が持つトークン（Vercel/Netlify 等の環境変数に設定した PAT）を使って GitHub を更新する形が前提になります。
 
 ---
 

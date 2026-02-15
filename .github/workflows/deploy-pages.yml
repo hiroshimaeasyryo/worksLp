@@ -29,6 +29,14 @@ jobs:
           mkdir -p _site
           rsync -a --exclude='.git' --exclude='.github' --exclude='_site' . _site/
 
+      # public リポジトリ用: Secrets に REPO_CONFIG_JSON_B64 を設定している場合のみ、
+      # デプロイ先に data/repo-config.json を生成（リポジトリには含めない）
+      - name: Create repo-config.json from secret (optional)
+        if: secrets.REPO_CONFIG_JSON_B64 != ''
+        run: |
+          mkdir -p _site/data
+          echo "${{ secrets.REPO_CONFIG_JSON_B64 }}" | base64 -d > _site/data/repo-config.json
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

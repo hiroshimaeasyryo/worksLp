@@ -47,18 +47,24 @@
             <h1 style="margin:0;">コンテンツ管理</h1>
             <a href="index.html" class="btn btn-secondary">LPをプレビュー</a>
         </div>
-        <p class="sub">編集後は「保存してデプロイ」で GitHub に反映されます。push により GitHub Actions が走り、数分でサイトに反映されます。</p>
+        <p class="sub">編集後は「保存してデプロイ」または「JSONをダウンロード」で反映できます。トークンがなくても、JSONをダウンロードして担当者に渡せば反映可能です。</p>
 
         <div class="card">
             <h2>編集するLP</h2>
             <div id="lpSelector" class="locations-list"></div>
         </div>
 
-        <div class="card">
-            <h2>GitHub トークン（保存時に必要）</h2>
-            <label>Personal Access Token（repo 権限）を入力すると、ここから直接保存・push できます。</label>
-            <input type="password" id="githubToken" placeholder="ghp_xxxx..." autocomplete="off" />
-            <p class="token-note">トークンはこの画面でのみ使用し、保存されません。Fine-grained の場合は Repository contents: Read and write を付与してください。</p>
+        <div class="card save-options">
+            <h2>保存方法（どちらか選べます）</h2>
+            <p class="token-note" style="margin-bottom:12px;">
+                <strong>方法A（トークン不要）</strong> … 「JSONをダウンロード」でファイルを取得し、担当者（エンジニア）に渡す。担当者がリポジトリにコミット・push するとサイトに反映されます。<br>
+                <strong>方法B（トークンあり）</strong> … 下のトークン欄に入力すると、ここから直接「保存してデプロイ」で GitHub に反映できます。
+            </p>
+            <div class="card" style="margin-top:12px;">
+                <h2 style="font-size:1rem;">GitHub トークン（方法B のときだけ入力）</h2>
+                <input type="password" id="githubToken" placeholder="ghp_xxxx...（任意）" autocomplete="off" />
+                <p class="token-note">トークンはこの画面でのみ使用し、保存されません。入力しなくても「JSONをダウンロード」で反映可能です。</p>
+            </div>
         </div>
 
         <div class="card">
@@ -102,8 +108,9 @@
             <textarea id="footer.locations" data-key="footer.locations" placeholder="東京(新宿)&#10;名古屋(今池)"></textarea>
         </div>
 
-        <div class="toolbar">
-            <button type="button" id="btnSave" class="btn btn-primary">保存してデプロイ</button>
+        <div class="toolbar" style="flex-wrap:wrap; gap:8px;">
+            <button type="button" id="btnSave" class="btn btn-primary">保存してデプロイ（トークン必要）</button>
+            <button type="button" id="btnDownload" class="btn btn-secondary">JSONをダウンロード（担当者に渡す・トークン不要）</button>
             <button type="button" id="btnReload" class="btn btn-secondary">再読み込み</button>
             <p id="saveMessage" class="success" style="display:none; margin:0;"></p>
             <p id="saveError" class="error" style="display:none; margin:0;"></p>
@@ -135,7 +142,15 @@
                 return fetch('data/repo-config.json')
                     .then(function (r) { return r.ok ? r.json() : null; })
                     .then(function (c) {
-                        if (c && c.owner && c.repo) repoConfigResolved = { owner: c.owner, repo: c.repo, branch: c.branch || 'main' };
+                        if (c) {
+                            repoConfigResolved = {
+                                owner: c.owner || '',
+                                repo: c.repo || '',
+                                branch: c.branch || 'main',
+                                saveApiUrl: c.saveApiUrl || '',
+                                saveApiSecret: c.saveApiSecret || ''
+                            };
+                        }
                     })
                     .catch(function () {});
             }
@@ -275,27 +290,79 @@
                     loadData(currentDataPath).then(renderForm).catch(function () {});
                 });
 
+                document.getElementById('btnDownload').addEventListener('click', function () {
+                    var payload = collectForm();
+                    var filename = currentDataPath.split('/').pop() || 'main.json';
+                    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                    var a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = filename;
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+                    document.getElementById('saveError').style.display = 'none';
+                    document.getElementById('saveMessage').textContent = '「' + filename + '」をダウンロードしました。このファイルを担当者に渡してください。';
+                    document.getElementById('saveMessage').style.display = 'block';
+                    setTimeout(function () {
+                        document.getElementById('saveMessage').style.display = 'none';
+                    }, 5000);
+                });
+
                 document.getElementById('btnSave').addEventListener('click', function () {
                     var token = document.getElementById('githubToken').value.trim();
                     var cfg = getRepoConfig();
+                    var useSaveApi = !token && repoConfigResolved && repoConfigResolved.saveApiUrl && repoConfigResolved.saveApiSecret;
+
                     if (!cfg.owner || !cfg.repo) {
-                        document.getElementById('saveError').textContent = 'GitHub リポジトリが未設定です。contents-manager.html の REPO_CONFIG または meta name="github-repo" で owner/repo を設定してください。';
+                        document.getElementById('saveError').textContent = 'GitHub リポジトリが未設定です。data/repo-config.json の owner / repo を設定してください。';
                         document.getElementById('saveError').style.display = 'block';
                         document.getElementById('saveMessage').style.display = 'none';
                         return;
                     }
-                    if (!token) {
-                        document.getElementById('saveError').textContent = 'GitHub Personal Access Token を入力してください。';
+                    if (!token && !useSaveApi) {
+                        document.getElementById('saveError').textContent = 'GitHub トークンが未入力です。「JSONをダウンロード」でファイルを取得し、担当者に渡す方法でも反映できます。';
                         document.getElementById('saveError').style.display = 'block';
                         document.getElementById('saveMessage').style.display = 'none';
                         return;
                     }
+
                     var payload = collectForm();
-                    var content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
-                    var apiBase = 'https://api.github.com/repos/' + cfg.owner + '/' + cfg.repo + '/contents/' + currentDataPath;
                     document.getElementById('saveError').style.display = 'none';
                     document.getElementById('saveMessage').textContent = '保存中...';
                     document.getElementById('saveMessage').style.display = 'block';
+
+                    if (useSaveApi) {
+                        fetch(repoConfigResolved.saveApiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                path: currentDataPath,
+                                content: payload,
+                                owner: cfg.owner,
+                                repo: cfg.repo,
+                                branch: cfg.branch || 'main',
+                                secret: repoConfigResolved.saveApiSecret
+                            })
+                        })
+                            .then(function (r) {
+                                return r.json().then(function (data) {
+                                    if (!r.ok) throw new Error(data.error || '保存に失敗しました');
+                                    return data;
+                                });
+                            })
+                            .then(function () {
+                                document.getElementById('saveMessage').textContent = '保存しました。GitHub Actions でデプロイが走ります。';
+                                document.getElementById('saveError').style.display = 'none';
+                            })
+                            .catch(function (err) {
+                                document.getElementById('saveMessage').style.display = 'none';
+                                document.getElementById('saveError').textContent = err.message || '保存に失敗しました';
+                                document.getElementById('saveError').style.display = 'block';
+                            });
+                        return;
+                    }
+
+                    var content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+                    var apiBase = 'https://api.github.com/repos/' + cfg.owner + '/' + cfg.repo + '/contents/' + currentDataPath;
 
                     fetch(apiBase + '?ref=' + (cfg.branch || 'main'))
                         .then(function (r) { return r.json(); })

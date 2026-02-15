@@ -1,0 +1,5 @@
+{
+  "name": "contents-manager-save-api",
+  "main": "index.js",
+  "engines": { "node": ">=18" }
+}

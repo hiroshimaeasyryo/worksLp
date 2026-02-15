@@ -1,0 +1,2 @@
+# 秘密を含む設定（public リポジトリでは commit しない）
+data/repo-config.json
