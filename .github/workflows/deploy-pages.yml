@@ -38,7 +38,7 @@ jobs:
         run: |
           if [ -n "$REPO_CONFIG_JSON_B64" ]; then
             mkdir -p _site/data
-            echo "$REPO_CONFIG_JSON_B64" | tr -d '\n\r\t ' | base64 -d > _site/data/repo-config.json
+            python3 -c 'import base64, os, re; s = re.sub(r"\s+", "", os.environ.get("REPO_CONFIG_JSON_B64", "")); s = s.replace("-", "+").replace("_", "/"); pad = 4 - len(s) % 4; s += "=" * (pad if pad != 4 else 0); open("_site/data/repo-config.json", "wb").write(base64.b64decode(s))'
           fi
 
       - name: Setup Pages
