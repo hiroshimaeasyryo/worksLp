@@ -1,0 +1,9 @@
+{
+  "locations": [
+    { "id": "main", "label": "全体用LP", "path": "data/main.json" },
+    { "id": "tokyo", "label": "東京", "path": "data/locations/tokyo.json" },
+    { "id": "nagoya", "label": "名古屋", "path": "data/locations/nagoya.json" },
+    { "id": "niigata", "label": "新潟", "path": "data/locations/niigata.json" },
+    { "id": "fukuoka", "label": "福岡", "path": "data/locations/fukuoka.json" }
+  ]
+}

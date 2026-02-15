@@ -1,8 +1,67 @@
 /**
  * 全体LP用スクリプト - ヒュッテワークス
+ * data/main.json を読み込み、[data-content] で指定した要素に反映する
  */
 (function () {
     'use strict';
+
+    function getByPath(obj, path) {
+        return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : null), obj);
+    }
+
+    function applyContent(data) {
+        if (!data) return;
+        document.querySelectorAll('[data-content]').forEach(el => {
+            const key = el.getAttribute('data-content');
+            const val = getByPath(data, key);
+            if (val == null) return;
+            const useBr = el.hasAttribute('data-content-br');
+            const hrefKey = el.getAttribute('data-content-href');
+            if (hrefKey) {
+                const url = getByPath(data, hrefKey);
+                if (url != null) el.setAttribute('href', url);
+            }
+            if (el.classList.contains('cta-line-link')) {
+                el.innerHTML = (typeof val === 'string' ? val : '') + ' <i class="fab fa-line text-3xl group-hover:rotate-12 transition-transform"></i>';
+                return;
+            }
+            if (useBr) {
+                el.innerHTML = String(val).replace(/\n/g, '<br>');
+            } else {
+                el.textContent = val;
+            }
+        });
+        var marqueeContainer = document.getElementById('marqueeStats');
+        if (marqueeContainer && data.marquee && Array.isArray(data.marquee.stats)) {
+            var icons = ['fa-users', 'fa-location-dot', 'fa-user-plus'];
+            var html = '';
+            for (var i = 0; i < 2; i++) {
+                data.marquee.stats.forEach(function (text, j) {
+                    html += '<div class="flex items-center gap-4"><i class="fas ' + (icons[j % icons.length]) + ' text-3xl"></i><span class="font-heading text-2xl font-bold">' + text + '</span></div>';
+                });
+            }
+            marqueeContainer.innerHTML = html;
+        }
+        var footerLocations = document.getElementById('footerLocations');
+        if (footerLocations && data.footer && Array.isArray(data.footer.locations)) {
+            footerLocations.innerHTML = data.footer.locations.map(function (name) {
+                return '<li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>' + name + '</li>';
+            }).join('');
+        }
+    }
+
+    function loadMainData() {
+        fetch('data/main.json')
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .then(applyContent)
+            .catch(function () {});
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadMainData);
+    } else {
+        loadMainData();
+    }
 
     // スクロールプログレスバー
     const progressBar = document.getElementById('progressBar');

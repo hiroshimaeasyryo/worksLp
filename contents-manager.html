@@ -4,9 +4,333 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コンテンツ管理 | ヒュッテワークス LP</title>
+    <style>
+        :root { --primary: #FF6B35; --secondary: #F7931E; --dark: #0A0E27; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--dark); color: #e2e8f0; min-height: 100vh; margin: 0; padding: 24px; }
+        .container { max-width: 720px; margin: 0 auto; }
+        h1 { font-size: 1.75rem; margin-bottom: 8px; color: #fff; }
+        .sub { color: #94a3b8; font-size: 0.9rem; margin-bottom: 24px; }
+        .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .card h2 { font-size: 1.1rem; color: var(--primary); margin: 0 0 16px 0; }
+        label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 4px; }
+        input[type="text"], input[type="password"], textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; margin-bottom: 12px; }
+        textarea { min-height: 80px; resize: vertical; }
+        button, .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; border: none; text-decoration: none; }
+        .btn-primary { background: linear-gradient(to right, var(--primary), var(--secondary)); color: #fff; }
+        .btn-primary:hover { opacity: 0.95; }
+        .btn-secondary { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+        .btn-secondary:hover { background: rgba(255,107,53,0.15); }
+        .error { color: #f87171; font-size: 0.9rem; margin-top: 8px; }
+        .success { color: #4ade80; font-size: 0.9rem; margin-top: 8px; }
+        .gate { max-width: 360px; margin: 80px auto; text-align: center; }
+        .gate input { margin-bottom: 16px; }
+        .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 24px; }
+        .token-note { font-size: 0.8rem; color: #64748b; margin-top: 8px; }
+        .locations-list { margin-top: 8px; }
+        .locations-list label { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; margin-bottom: 8px; }
+    </style>
 </head>
 <body>
-    <h1>Contents Manager</h1>
-    <p>（編集画面は別途実装予定）</p>
+    <div id="gate" class="gate">
+        <h1>コンテンツ管理</h1>
+        <p class="sub">アクセスコードを入力してください</p>
+        <form id="accessForm">
+            <input type="password" id="accessCode" placeholder="アクセスコード" autocomplete="off" />
+            <p id="accessError" class="error" style="display:none;"></p>
+            <button type="submit" class="btn btn-primary">入室する</button>
+        </form>
+    </div>
+
+    <div id="app" class="container" style="display:none;">
+        <div class="toolbar">
+            <h1 style="margin:0;">コンテンツ管理</h1>
+            <a href="index.html" class="btn btn-secondary">LPをプレビュー</a>
+        </div>
+        <p class="sub">編集後は「保存してデプロイ」で GitHub に反映されます。push により GitHub Actions が走り、数分でサイトに反映されます。</p>
+
+        <div class="card">
+            <h2>編集するLP</h2>
+            <div id="lpSelector" class="locations-list"></div>
+        </div>
+
+        <div class="card">
+            <h2>GitHub トークン（保存時に必要）</h2>
+            <label>Personal Access Token（repo 権限）を入力すると、ここから直接保存・push できます。</label>
+            <input type="password" id="githubToken" placeholder="ghp_xxxx..." autocomplete="off" />
+            <p class="token-note">トークンはこの画面でのみ使用し、保存されません。Fine-grained の場合は Repository contents: Read and write を付与してください。</p>
+        </div>
+
+        <div class="card">
+            <h2>ヒーロー</h2>
+            <label>キャッチコピー</label>
+            <input type="text" id="hero.catchcopy" data-key="hero.catchcopy" />
+            <label>サブテキスト</label>
+            <input type="text" id="hero.subtext" data-key="hero.subtext" />
+            <label>メインCTA文言</label>
+            <input type="text" id="hero.ctaPrimary" data-key="hero.ctaPrimary" />
+            <label>サブCTA文言</label>
+            <input type="text" id="hero.ctaSecondary" data-key="hero.ctaSecondary" />
+        </div>
+
+        <div class="card">
+            <h2>マーキー統計（1行につき1つ、改行で区切る）</h2>
+            <textarea id="marquee.stats" data-key="marquee.stats" placeholder="300+ 成長した先輩たち&#10;4拠点で展開中&#10;毎月3名限定募集"></textarea>
+        </div>
+
+        <div class="card">
+            <h2>最終CTA</h2>
+            <label>タイトル（改行は \n）</label>
+            <input type="text" id="cta.title" data-key="cta.title" placeholder="まずは説明会で、\n話を聞いてみませんか?" />
+            <label>説明文</label>
+            <input type="text" id="cta.description" data-key="cta.description" />
+            <label>ボタン文言</label>
+            <input type="text" id="cta.lineLabel" data-key="cta.lineLabel" />
+            <label>ボタンURL</label>
+            <input type="text" id="cta.lineUrl" data-key="cta.lineUrl" />
+            <label>脚注</label>
+            <input type="text" id="cta.footnote" data-key="cta.footnote" />
+        </div>
+
+        <div class="card">
+            <h2>フッター</h2>
+            <label>説明文</label>
+            <textarea id="footer.description" data-key="footer.description"></textarea>
+            <label>著作権表記</label>
+            <input type="text" id="footer.copyright" data-key="footer.copyright" />
+            <label>拠点一覧（1行1拠点）</label>
+            <textarea id="footer.locations" data-key="footer.locations" placeholder="東京(新宿)&#10;名古屋(今池)"></textarea>
+        </div>
+
+        <div class="toolbar">
+            <button type="button" id="btnSave" class="btn btn-primary">保存してデプロイ</button>
+            <button type="button" id="btnReload" class="btn btn-secondary">再読み込み</button>
+            <p id="saveMessage" class="success" style="display:none; margin:0;"></p>
+            <p id="saveError" class="error" style="display:none; margin:0;"></p>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var ACCESS_CODE = 'hutte2025';
+            var STORAGE_KEY = 'contents_manager_unlocked';
+            var REPO_CONFIG = { owner: '', repo: '', branch: 'main' };
+            var repoConfigResolved = null;
+
+            function getRepoConfig() {
+                if (repoConfigResolved && repoConfigResolved.owner && repoConfigResolved.repo)
+                    return repoConfigResolved;
+                if (REPO_CONFIG.owner && REPO_CONFIG.repo)
+                    return REPO_CONFIG;
+                var base = document.querySelector('meta[name="github-repo"]');
+                if (base && base.content) {
+                    var parts = base.content.replace(/^https:\/\/github\.com\//, '').replace(/\/$/, '').split('/');
+                    if (parts.length >= 2)
+                        return { owner: parts[0], repo: parts[1], branch: 'main' };
+                }
+                return REPO_CONFIG;
+            }
+
+            function loadRepoConfig() {
+                return fetch('data/repo-config.json')
+                    .then(function (r) { return r.ok ? r.json() : null; })
+                    .then(function (c) {
+                        if (c && c.owner && c.repo) repoConfigResolved = { owner: c.owner, repo: c.repo, branch: c.branch || 'main' };
+                    })
+                    .catch(function () {});
+            }
+
+            function isUnlocked() {
+                try {
+                    return sessionStorage.getItem(STORAGE_KEY) === '1';
+                } catch (e) { return false; }
+            }
+            function setUnlocked() {
+                try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+            }
+
+            var gate = document.getElementById('gate');
+            var app = document.getElementById('app');
+            var accessForm = document.getElementById('accessForm');
+            var accessCode = document.getElementById('accessCode');
+            var accessError = document.getElementById('accessError');
+
+            if (isUnlocked()) {
+                gate.style.display = 'none';
+                app.style.display = 'block';
+                initApp();
+            }
+
+            accessForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                accessError.style.display = 'none';
+                if (accessCode.value.trim() === ACCESS_CODE) {
+                    setUnlocked();
+                    gate.style.display = 'none';
+                    app.style.display = 'block';
+                    initApp();
+                } else {
+                    accessError.textContent = 'アクセスコードが正しくありません';
+                    accessError.style.display = 'block';
+                }
+            });
+
+            var currentDataPath = 'data/main.json';
+            var currentData = null;
+
+            function getByPath(obj, path) {
+                return path.split('.').reduce(function (o, k) {
+                    return o && o[k] !== undefined ? o[k] : null;
+                }, obj);
+            }
+            function setByPath(obj, path, value) {
+                var keys = path.split('.');
+                var o = obj;
+                for (var i = 0; i < keys.length - 1; i++) {
+                    var k = keys[i];
+                    if (!(k in o)) o[k] = {};
+                    o = o[k];
+                }
+                o[keys[keys.length - 1]] = value;
+            }
+
+            function renderForm(data) {
+                currentData = data;
+                document.querySelectorAll('[data-key]').forEach(function (el) {
+                    var key = el.getAttribute('data-key');
+                    var val = getByPath(data, key);
+                    if (val === undefined || val === null) return;
+                    if (Array.isArray(val)) {
+                        el.value = val.join('\n');
+                    } else {
+                        el.value = String(val);
+                    }
+                });
+            }
+
+            function collectForm() {
+                var data = JSON.parse(JSON.stringify(currentData || {}));
+                document.querySelectorAll('[data-key]').forEach(function (el) {
+                    var key = el.getAttribute('data-key');
+                    var val = el.value;
+                    if (key === 'marquee.stats' || key === 'footer.locations') {
+                        setByPath(data, key, val.trim() ? val.trim().split(/\n/) : []);
+                    } else {
+                        setByPath(data, key, val);
+                    }
+                });
+                return data;
+            }
+
+            function loadLocations() {
+                return fetch('data/locations/index.json').then(function (r) { return r.json(); });
+            }
+
+            function loadData(path) {
+                return fetch(path).then(function (r) {
+                    if (!r.ok) throw new Error('読み込み失敗');
+                    return r.json();
+                });
+            }
+
+            function initApp() {
+                loadRepoConfig().then(function () {
+                    return loadLocations();
+                }).then(function (loc) {
+                    var list = document.getElementById('lpSelector');
+                    list.innerHTML = '';
+                    (loc.locations || []).forEach(function (item) {
+                        var label = document.createElement('label');
+                        var radio = document.createElement('input');
+                        radio.type = 'radio';
+                        radio.name = 'lp';
+                        radio.value = item.path;
+                        if (item.path === currentDataPath) radio.checked = true;
+                        radio.addEventListener('change', function () {
+                            currentDataPath = item.path;
+                            loadData(currentDataPath).then(renderForm).catch(function () {
+                                renderForm({});
+                            });
+                        });
+                        label.appendChild(radio);
+                        label.appendChild(document.createTextNode(item.label));
+                        list.appendChild(label);
+                    });
+                }).catch(function () {
+                    var list = document.getElementById('lpSelector');
+                    list.innerHTML = '<label><input type="radio" name="lp" value="data/main.json" checked> 全体用LP</label>';
+                    currentDataPath = 'data/main.json';
+                });
+
+                loadData(currentDataPath).then(renderForm).catch(function () {
+                    renderForm({
+                        hero: { catchcopy: '', subtext: '', ctaPrimary: '', ctaSecondary: '' },
+                        marquee: { stats: [] },
+                        cta: { title: '', description: '', lineLabel: '', lineUrl: '#', footnote: '' },
+                        footer: { description: '', copyright: '', locations: [] }
+                    });
+                });
+
+                document.getElementById('btnReload').addEventListener('click', function () {
+                    loadData(currentDataPath).then(renderForm).catch(function () {});
+                });
+
+                document.getElementById('btnSave').addEventListener('click', function () {
+                    var token = document.getElementById('githubToken').value.trim();
+                    var cfg = getRepoConfig();
+                    if (!cfg.owner || !cfg.repo) {
+                        document.getElementById('saveError').textContent = 'GitHub リポジトリが未設定です。contents-manager.html の REPO_CONFIG または meta name="github-repo" で owner/repo を設定してください。';
+                        document.getElementById('saveError').style.display = 'block';
+                        document.getElementById('saveMessage').style.display = 'none';
+                        return;
+                    }
+                    if (!token) {
+                        document.getElementById('saveError').textContent = 'GitHub Personal Access Token を入力してください。';
+                        document.getElementById('saveError').style.display = 'block';
+                        document.getElementById('saveMessage').style.display = 'none';
+                        return;
+                    }
+                    var payload = collectForm();
+                    var content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+                    var apiBase = 'https://api.github.com/repos/' + cfg.owner + '/' + cfg.repo + '/contents/' + currentDataPath;
+                    document.getElementById('saveError').style.display = 'none';
+                    document.getElementById('saveMessage').textContent = '保存中...';
+                    document.getElementById('saveMessage').style.display = 'block';
+
+                    fetch(apiBase + '?ref=' + (cfg.branch || 'main'))
+                        .then(function (r) { return r.json(); })
+                        .then(function (file) {
+                            var sha = file.sha;
+                            if (!sha) throw new Error('ファイルが見つかりません: ' + currentDataPath);
+                            return fetch(apiBase, {
+                                method: 'PUT',
+                                headers: {
+                                    'Authorization': 'Bearer ' + token,
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/vnd.github+json',
+                                    'X-GitHub-Api-Version': '2022-11-28'
+                                },
+                                body: JSON.stringify({
+                                    message: 'contents-manager: update ' + currentDataPath,
+                                    content: content,
+                                    sha: sha,
+                                    branch: cfg.branch || 'main'
+                                })
+                            });
+                        })
+                        .then(function (r) {
+                            if (!r.ok) return r.json().then(function (e) { throw new Error(e.message || '保存に失敗しました'); });
+                            document.getElementById('saveMessage').textContent = '保存しました。GitHub Actions でデプロイが走ります。';
+                            document.getElementById('saveError').style.display = 'none';
+                        })
+                        .catch(function (err) {
+                            document.getElementById('saveMessage').style.display = 'none';
+                            document.getElementById('saveError').textContent = err.message || '保存に失敗しました';
+                            document.getElementById('saveError').style.display = 'block';
+                        });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

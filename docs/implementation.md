@@ -8,3 +8,5 @@
 ## 関連ドキュメント
 - **全体LP・拠点別LPの構成**: [multi-lp-structure.md](./multi-lp-structure.md)  
   GitHub Pages の命名規則、推奨ディレクトリ・ファイル構成、および contents_manager で拠点ごとのLPを編集する際の方針を記載。
+- **GitHub 設定手順**: [github-setup.md](./github-setup.md)  
+  Pages の公開方法（GitHub Actions）、contents-manager の保存先リポジトリ設定・PAT の取り方、アクセスコード変更、運用の流れを記載。
