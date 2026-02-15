@@ -31,11 +31,15 @@ jobs:
 
       # public リポジトリ用: Secrets に REPO_CONFIG_JSON_B64 を設定している場合のみ、
       # デプロイ先に data/repo-config.json を生成（リポジトリには含めない）
+      # ※ if で secrets を参照するとエラーになるため、env で渡して run 内で判定
       - name: Create repo-config.json from secret (optional)
-        if: secrets.REPO_CONFIG_JSON_B64 != ''
+        env:
+          REPO_CONFIG_JSON_B64: ${{ secrets.REPO_CONFIG_JSON_B64 }}
         run: |
-          mkdir -p _site/data
-          echo "${{ secrets.REPO_CONFIG_JSON_B64 }}" | base64 -d > _site/data/repo-config.json
+          if [ -n "$REPO_CONFIG_JSON_B64" ]; then
+            mkdir -p _site/data
+            echo "$REPO_CONFIG_JSON_B64" | base64 -d > _site/data/repo-config.json
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
