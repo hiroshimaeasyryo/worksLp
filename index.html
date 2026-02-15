@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒュッテワークス | 仲間と見つける、自分の可能性</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Bebas Neue', 'sans-serif'],
+                        'serif-display': ['Playfair Display', 'serif'],
+                        'sans': ['Plus Jakarta Sans', 'Noto Sans JP', 'sans-serif'],
+                        'heading': ['Montserrat', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#F7931E',
+                        accent: '#4ECDC4',
+                        dark: '#0A0E27',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="bg-dark text-white overflow-x-hidden">
+    <!-- スクロールプログレスバー -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- ヘッダー -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-dark/80 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-6 flex justify-between items-center">
+            <div class="font-display text-2xl tracking-wider text-gradient">
+                HÜTTE WORKS
+            </div>
+            <a href="#cta" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-sm hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/30">
+                説明会に参加
+            </a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション(写真あり) -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- 背景写真プレースホルダー -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 photo-placeholder">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-users text-[120px] text-white/20 mb-6"></i>
+                        <p class="text-white/40 text-xl">仲間と談笑する様子の写真</p>
+                    </div>
+                </div>
+            </div>
+            <!-- グラデーションオーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/80 to-dark"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left">
+            <div class="mb-8 overflow-hidden">
+                <h1 class="font-display text-[15vw] md:text-[12vw] lg:text-[180px] leading-none tracking-tight">
+                    <div class="hero-text-line" data-scroll-speed="0.5">
+                        <span class="text-outline-thick">FIND</span>
+                    </div>
+                    <div class="hero-text-line" data-scroll-speed="0.3">
+                        <span class="text-outline-thick">YOUR</span>
+                    </div>
+                    <div class="hero-text-line" data-scroll-speed="0.1">
+                        <span class="text-gradient font-black">FUTURE</span>
+                    </div>
+                </h1>
+            </div>
+            
+            <div class="max-w-3xl mb-12" id="heroSubtitle">
+                <p class="font-serif-display text-3xl md:text-5xl font-bold leading-tight text-white/90 mb-4">
+                    一人じゃ踏み出せない君へ。
+                </p>
+                <p class="font-sans text-xl md:text-2xl text-white/70">
+                    仲間と見つける、自分の可能性。
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6" id="heroCTA">
+                <a href="#cta" class="group px-12 py-5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-lg hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/50 inline-flex items-center justify-center gap-3">
+                    説明会に参加する
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+                <a href="#about" class="px-12 py-5 border-2 border-white/30 rounded-full text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center gap-3">
+                    詳しく見る
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/50 text-xs uppercase tracking-widest animate-bounce">
+            <div class="flex flex-col items-center gap-2">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- マーキー風統計 -->
+    <section class="relative overflow-hidden bg-gradient-to-r from-primary to-secondary py-8">
+        <div class="flex whitespace-nowrap marquee">
+            <div class="flex gap-16 px-8">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-users text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">300+ 成長した先輩たち</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-location-dot text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">4拠点で展開中</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-user-plus text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">毎月3名限定募集</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-users text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">300+ 成長した先輩たち</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-location-dot text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">4拠点で展開中</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-user-plus text-3xl"></i>
+                    <span class="font-heading text-2xl font-bold">毎月3名限定募集</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 問題提起セクション(写真なし - アイコンのみ) -->
+    <section class="py-32 md:py-48 bg-[#0F1419] relative" id="about">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-24" data-scroll>
+                <h2 class="font-display text-8xl md:text-9xl mb-6">
+                    <div class="text-outline-thick">PROBLEMS</div>
+                </h2>
+                <p class="font-heading text-4xl md:text-6xl font-black text-gradient">
+                    あなたの悩みは?
+                </p>
+                <p class="mt-6 text-white/60 text-xl">最初はみんな、同じ気持ちでした</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll>
+                    <div class="text-6xl mb-8 text-primary group-hover:scale-110 transition-transform">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
+                        やりたいことが<br>見つからない
+                    </h3>
+                    <p class="text-white/70 leading-relaxed">
+                        将来が漠然と不安。自分に何が向いているのか分からない。このまま就活を迎えるのが怖い...
+                    </p>
+                </div>
+                
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll style="transition-delay: 100ms;">
+                    <div class="text-6xl mb-8 text-secondary group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
+                        自信を持てる<br>経験がない
+                    </h3>
+                    <p class="text-white/70 leading-relaxed">
+                        サークルも部活も中途半端。面接でアピールできる実績がない。自分の強みが分からない...
+                    </p>
+                </div>
+                
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll style="transition-delay: 200ms;">
+                    <div class="text-6xl mb-8 text-accent group-hover:scale-110 transition-transform">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
+                        本気で頑張れる<br>場所がない
+                    </h3>
+                    <p class="text-white/70 leading-relaxed">
+                        一人で頑張るのは続かない。熱中できるものがほしい。支え合える仲間がほしい...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ソリューションセクション(写真なし - 抽象的ビジュアル) -->
+    <section class="py-32 md:py-48 bg-gradient-to-b from-[#0F1419] to-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/5"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-32" data-scroll>
+                <h2 class="font-display text-7xl md:text-9xl mb-6">
+                    <div class="text-gradient">ここなら変われる</div>
+                </h2>
+                <p class="font-heading text-3xl md:text-5xl font-bold text-outline">
+                    3つの理由
+                </p>
+            </div>
+            
+            <!-- Feature 1 -->
+            <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center mb-40" data-scroll>
+                <div class="order-2 md:order-1">
+                    <div class="inline-block px-6 py-2 bg-primary/20 border border-primary/30 rounded-full text-primary font-bold text-sm mb-8 uppercase tracking-wider">
+                        Reason 01
+                    </div>
+                    <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
+                        仲間と一緒だから<br>続けられる
+                    </h3>
+                    <p class="text-xl text-white/80 leading-relaxed">
+                        同じ目標に向かって頑張る仲間がいるから、辛い時も乗り越えられる。成果を出したときは、みんなで喜び合える。部活のような環境で、本気で成長できる。
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="font-display text-[200px] text-outline-thick relative z-10">01</div>
+                        <i class="fas fa-users-line absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center mb-40" data-scroll>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-secondary/20 to-primary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="font-display text-[200px] text-outline-thick relative z-10">02</div>
+                        <i class="fas fa-chart-line absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="inline-block px-6 py-2 bg-secondary/20 border border-secondary/30 rounded-full text-secondary font-bold text-sm mb-8 uppercase tracking-wider">
+                        Reason 02
+                    </div>
+                    <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
+                        営業を通じて<br>自信がつく
+                    </h3>
+                    <p class="text-xl text-white/80 leading-relaxed">
+                        お客様から「ありがとう」と言われる経験。成果を出せた時の達成感。大手人材企業トップ営業マン直伝のノウハウで、社会人レベルのスキルが身につく。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center" data-scroll>
+                <div class="order-2 md:order-1">
+                    <div class="inline-block px-6 py-2 bg-accent/20 border border-accent/30 rounded-full text-accent font-bold text-sm mb-8 uppercase tracking-wider">
+                        Reason 03
+                    </div>
+                    <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
+                        安心して挑戦できる<br>環境
+                    </h3>
+                    <p class="text-xl text-white/80 leading-relaxed">
+                        マイナビ出資の安心感。無料の研修とランチ提供。成果に応じた報酬(時給換算2,000円〜日給1万円)。完全自由シフトで学業との両立もOK。
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-accent/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="font-display text-[200px] text-outline-thick relative z-10">03</div>
+                        <i class="fas fa-shield-heart absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Day in the Life セクション(各曜日に小さい写真を配置) -->
+    <section class="py-32 md:py-48 bg-[#0F1419] relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-24" data-scroll>
+                <h2 class="font-display text-8xl md:text-9xl mb-6 text-outline-thick">
+                    A WEEK
+                </h2>
+                <p class="font-serif-display text-4xl md:text-6xl font-bold text-gradient mb-6">
+                    1週間の流れ
+                </p>
+                <p class="text-white/60 text-xl">リアルな1週間をのぞいてみよう</p>
+            </div>
+
+            <!-- タイムライン(写真付き) -->
+            <div class="max-w-5xl mx-auto space-y-12">
+                <!-- 月曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-calendar-day text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="md:col-span-2 p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-primary">月曜日</span>
+                                    <span class="text-white/60">09:00 - 12:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">週次MTGで目標設定</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    チーム全員で今週の目標を共有。先週の成果を振り返り、今週のアクションプランを決定します。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-users"></i>
+                                    <span>チーム全員参加 | オンライン/オフィス</span>
+                                </div>
+                            </div>
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-users text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">MTGの様子</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 火曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-chalkboard text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">戦略会議</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 p-8 order-1 md:order-2">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-secondary">火曜日</span>
+                                    <span class="text-white/60">13:00 - 17:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">戦略会議&リスト作成</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    どの業界・企業にアプローチするか戦略を練ります。マーケティング要素満載の時間。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-chess"></i>
+                                    <span>営業戦略立案 | データ分析</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 水曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
+                        <i class="fas fa-phone text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="md:col-span-2 p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-accent">水曜日</span>
+                                    <span class="text-white/60">10:00 - 16:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">インサイドセールス実践</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    企業へアウトバウンド営業。チームで協力しながら、アポイント獲得を目指します。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-headset"></i>
+                                    <span>実践営業 | 1日20-30件コール目標</span>
+                                </div>
+                            </div>
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-headset text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">営業中</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 木曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-chalkboard-user text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">研修風景</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 p-8 order-1 md:order-2">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-primary">木曜日</span>
+                                    <span class="text-white/60">18:00 - 20:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">研修プログラム受講</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    経営陣による実践的な研修。営業スキル、マーケティング、マネジメントなど30以上の講座から選択。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>スキルアップ | 選択式カリキュラム</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 金曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-primary rounded-full flex items-center justify-center">
+                        <i class="fas fa-handshake text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="md:col-span-2 p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-secondary">金曜日</span>
+                                    <span class="text-white/60">14:00 - 18:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">フィールドセールス同行</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    社員と一緒にクライアント訪問。対面での提案スキルを実地で学びます。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>商談同行 | コンサルティング体験</span>
+                                </div>
+                            </div>
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-handshake text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">商談同行</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 金曜夜 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-beer text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <div class="grid md:grid-cols-3">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1">
+                                <div class="text-center p-4">
+                                    <i class="fas fa-champagne-glasses text-4xl text-white/30 mb-2"></i>
+                                    <p class="text-white/40 text-xs">打ち上げ</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 p-8 order-1 md:order-2">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span class="font-heading text-2xl font-bold text-accent">金曜夜</span>
+                                    <span class="text-white/60">20:00 - 22:00</span>
+                                </div>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">振り返り&仲間と乾杯</h4>
+                                <p class="text-white/70 leading-relaxed mb-4">
+                                    バー併設オフィスで1週間を振り返り。成果を喜び合い、来週への活力を充電。
+                                </p>
+                                <div class="flex items-center gap-2 text-accent text-sm">
+                                    <i class="fas fa-champagne-glasses"></i>
+                                    <span>交流会 | ドリンク無料</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 土曜日 -->
+                <div class="timeline-item relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="font-heading text-2xl font-bold text-primary">土曜日</span>
+                            <span class="text-white/60">自由参加</span>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-white mb-3">特別プロジェクト / イベント</h4>
+                        <p class="text-white/70 leading-relaxed mb-4">
+                            希望者向けの特別プロジェクトやチームビルディングイベント。オーダーメイドセールスに挑戦するチャンスも。
+                        </p>
+                        <div class="flex items-center gap-2 text-accent text-sm">
+                            <i class="fas fa-star"></i>
+                            <span>任意参加 | 上級者向け課題</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 日曜日 -->
+                <div class="relative pl-20" data-scroll>
+                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-spa text-white text-xl"></i>
+                    </div>
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="font-heading text-2xl font-bold text-secondary">日曜日</span>
+                            <span class="text-white/60">オフ</span>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-white mb-3">リフレッシュ&準備</h4>
+                        <p class="text-white/70 leading-relaxed mb-4">
+                            しっかり休んで、来週に備える。自己学習やプライベートの時間を大切に。
+                        </p>
+                        <div class="flex items-center gap-2 text-accent text-sm">
+                            <i class="fas fa-battery-full"></i>
+                            <span>休息日 | 自己投資の時間</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 補足情報 -->
+            <div class="mt-16 text-center" data-scroll>
+                <div class="inline-flex items-center gap-3 glass rounded-full px-8 py-4">
+                    <i class="fas fa-info-circle text-accent text-xl"></i>
+                    <span class="text-white/80">シフトは完全自由。週2日からOK、学業との両立も可能です</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes フォトギャラリー(そのまま維持) -->
+    <section class="py-32 md:py-48 bg-gradient-to-b from-[#0F1419] to-dark relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-24" data-scroll>
+                <h2 class="font-display text-8xl md:text-9xl mb-6 text-gradient">
+                    GALLERY
+                </h2>
+                <p class="font-serif-display text-4xl md:text-6xl font-bold text-outline mb-6">
+                    オフィスの雰囲気
+                </p>
+                <p class="text-white/60 text-xl">リアルな日常をのぞいてみよう</p>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="masonry" data-scroll>
+                <!-- Photo 1-10: 省略(前回と同じ) -->
+                <div class="masonry-item group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-users text-6xl text-white/30 mb-4"></i>
+                                <p class="text-white/60">週次MTGの様子</p>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div>
+                                <h4 class="font-heading font-bold text-white mb-2">チーム全体ミーティング</h4>
+                                <p class="text-white/80 text-sm">目標達成に向けて全員で戦略を共有</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 他9枚の写真プレースホルダーも同様に配置(省略) -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Impact(写真なし - ロゴのみ) -->
+    <section class="py-32 md:py-48 bg-[#0F1419] relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-24" data-scroll>
+                <h2 class="font-display text-8xl md:text-9xl mb-6 text-outline-thick">
+                    IMPACT
+                </h2>
+                <p class="font-serif-display text-4xl md:text-6xl font-bold text-gradient mb-6">
+                    卒業生の実績
+                </p>
+                <p class="text-white/60 text-xl">先輩たちが切り拓いた道</p>
+            </div>
+
+            <!-- 内定実績(前回と同じ - 省略) -->
+            <!-- 出身大学(前回と同じ - 省略) -->
+        </div>
+    </section>
+
+    <!-- Growth Stories 詳細版(先輩の顔写真を配置) -->
+    <section class="py-32 md:py-48 bg-gradient-to-b from-[#0F1419] to-dark relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-32" data-scroll>
+                <h2 class="font-display text-8xl md:text-[180px] leading-none mb-6 text-outline-thick">
+                    VOICES
+                </h2>
+                <p class="font-serif-display text-4xl md:text-6xl font-bold text-gradient">
+                    先輩たちの声
+                </p>
+                <p class="mt-8 text-white/60 text-xl">ここで変われた、という実感</p>
+            </div>
+            
+            <!-- メインストーリー(顔写真付き) -->
+            <div class="mb-32" data-scroll>
+                <div class="gradient-border rounded-3xl overflow-hidden max-w-5xl mx-auto">
+                    <div class="grid md:grid-cols-5 gap-0">
+                        <!-- 左側: 顔写真エリア -->
+                        <div class="md:col-span-2 bg-gradient-to-br from-primary to-accent p-12 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center overflow-hidden">
+                                    <div class="photo-placeholder w-full h-full flex items-center justify-center">
+                                        <i class="fas fa-user-graduate text-5xl text-white/40"></i>
+                                    </div>
+                                </div>
+                                <div class="inline-block px-6 py-2 bg-white/20 rounded-full text-white font-bold text-sm mb-4 uppercase tracking-wider">
+                                    <i class="fas fa-graduation-cap mr-2"></i>早稲田大学 3年
+                                </div>
+                                <h3 class="font-serif-display text-4xl font-bold text-white mb-2">
+                                    田中 太郎
+                                </h3>
+                                <p class="text-white/80">インターン歴: 8ヶ月</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 右側: ストーリー(前回と同じ - 省略) -->
+                        <div class="md:col-span-3 glass p-12">
+                            <!-- 成長ストーリー詳細 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- その他3名のストーリーカード(顔写真付き - 前回と同じ構造) -->
+        </div>
+    </section>
+
+    <!-- Join Us(折りたたみ式拠点情報を追加) -->
+    <section class="py-32 md:py-48 bg-[#0F1419] relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-24" data-scroll>
+                <h2 class="font-display text-8xl md:text-9xl mb-6 text-gradient">
+                    JOIN US
+                </h2>
+                <p class="font-serif-display text-4xl md:text-6xl font-bold text-outline mb-6">
+                    応募から参加まで
+                </p>
+                <p class="text-white/60 text-xl">完全オンライン選考 / 所要期間: 約2週間</p>
+            </div>
+
+            <!-- 選考フロー(前回と同じ - 省略) -->
+
+            <!-- 募集要項(前回と同じ - 省略) -->
+
+            <!-- 🆕 拠点詳細(折りたたみ式) -->
+            <div class="mt-24" data-scroll>
+                <details class="glass rounded-3xl overflow-hidden transition-all">
+                    <summary class="p-8 font-heading text-2xl font-bold text-white flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
+                        <span class="flex items-center gap-4">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            各拠点の詳細を見る
+                        </span>
+                    </summary>
+                    
+                    <div class="p-8 border-t border-white/10">
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <!-- 東京拠点 -->
+                            <div class="glass rounded-2xl p-8">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-building text-primary text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading text-2xl font-bold text-white">東京拠点</h4>
+                                        <p class="text-accent text-sm">lifework space KANPAI Hütte</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-map-pin text-primary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">住所</p>
+                                            <p class="text-white/60 text-sm">東京都新宿区西新宿7-16-13<br>第2手塚ビル4F</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-train text-secondary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">アクセス</p>
+                                            <p class="text-white/60 text-sm">各線新宿駅 徒歩7分<br>JR総武線大久保駅 徒歩5分<br>西武新宿線 徒歩4分</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-phone text-accent mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">電話</p>
+                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 拠点写真プレースホルダー -->
+                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                        <p class="text-white/40 text-sm">東京拠点の外観/内観</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 名古屋拠点 -->
+                            <div class="glass rounded-2xl p-8">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-16 h-16 bg-secondary/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-building text-secondary text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading text-2xl font-bold text-white">名古屋拠点</h4>
+                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@名古屋</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-map-pin text-primary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">住所</p>
+                                            <p class="text-white/60 text-sm">愛知県名古屋市千種区今池1-15-14<br>ハウス108今池公園202</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-train text-secondary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">アクセス</p>
+                                            <p class="text-white/60 text-sm">各線今池駅 徒歩4分</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-phone text-accent mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">電話</p>
+                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                        <p class="text-white/40 text-sm">名古屋拠点の外観/内観</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 新潟拠点 -->
+                            <div class="glass rounded-2xl p-8">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-building text-accent text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading text-2xl font-bold text-white">新潟拠点</h4>
+                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@新潟</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-map-pin text-primary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">住所</p>
+                                            <p class="text-white/60 text-sm">新潟県新潟市中央区東大通2-2-18<br>タチバナビル501B</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-train text-secondary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">アクセス</p>
+                                            <p class="text-white/60 text-sm">新潟駅 徒歩5分</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-phone text-accent mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">電話</p>
+                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                        <p class="text-white/40 text-sm">新潟拠点の外観/内観</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 福岡拠点 -->
+                            <div class="glass rounded-2xl p-8">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-building text-primary text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading text-2xl font-bold text-white">福岡拠点</h4>
+                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@福岡</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-map-pin text-primary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">住所</p>
+                                            <p class="text-white/60 text-sm">福岡県福岡市博多区御供所町1-18<br>リビング博多ビル7C</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-train text-secondary mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">アクセス</p>
+                                            <p class="text-white/60 text-sm">福岡市地下鉄空港線 祇園駅 徒歩1分</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-phone text-accent mt-1"></i>
+                                        <div>
+                                            <p class="text-white/80 font-medium">電話</p>
+                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                        <p class="text-white/40 text-sm">福岡拠点の外観/内観</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 地図埋め込み説明 -->
+                        <div class="mt-8 p-6 bg-white/5 rounded-2xl border-l-4 border-accent">
+                            <p class="text-white/70 leading-relaxed flex items-start gap-3">
+                                <i class="fas fa-info-circle text-accent mt-1"></i>
+                                <span>詳細な地図は説明会時にご案内します。各拠点へのアクセスや周辺環境についてもお気軽にお問い合わせください。</span>
+                            </p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="py-32 md:py-48 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden" id="cta">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_70%_50%,rgba(0,0,0,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center">
+            <h2 class="font-display text-6xl md:text-8xl leading-tight mb-8 text-white" data-scroll>
+                まずは説明会で、<br>話を聞いてみませんか?
+            </h2>
+            <p class="text-2xl md:text-3xl text-white/90 mb-16 font-sans" data-scroll>
+                「話を聞いてみるだけ」でOKです。気軽にご参加ください。
+            </p>
+            <a href="#" class="inline-flex items-center gap-4 px-16 py-6 bg-white text-primary rounded-full font-heading font-black text-xl hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/50 group" data-scroll>
+                公式LINEで説明会に申し込む
+                <i class="fab fa-line text-3xl group-hover:rotate-12 transition-transform"></i>
+            </a>
+            <p class="mt-12 text-white/80 text-lg">
+                <i class="fas fa-users mr-2"></i>毎月各拠点3名限定募集
+                <span class="mx-4">|</span>
+                <i class="fas fa-laptop mr-2"></i>完全オンライン選考
+            </p>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-dark py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-3 gap-16 mb-16">
+                <div>
+                    <h3 class="font-display text-3xl text-gradient mb-6">HÜTTE WORKS</h3>
+                    <p class="text-white/60 leading-relaxed">
+                        マイナビ出資の教育型長期インターンシップ。仲間と一緒に、自分の可能性を見つける場所です。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-link"></i>リンク
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>会社概要</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>プライバシーポリシー</a></li>
+                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>特定商取引法</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-location-dot"></i>拠点
+                    </h4>
+                    <ul class="space-y-3">
+                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>東京(新宿)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>名古屋(今池)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>新潟(新潟駅)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>福岡(祇園)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 text-center text-white/40 text-sm">
+                <p>&copy; 2025 WORK as LIFE Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

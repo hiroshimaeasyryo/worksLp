@@ -1,0 +1,151 @@
+/* 全体LP用スタイル - ヒュッテワークス */
+.text-gradient {
+    background: linear-gradient(135deg, #FF6B35, #F7931E, #4ECDC4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+}
+
+.text-outline-thick {
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.2);
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-border {
+    border: 2px solid transparent;
+    background: linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)) padding-box,
+                linear-gradient(135deg, #FF6B35, #4ECDC4) border-box;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35, #F7931E, #4ECDC4);
+    transform-origin: left;
+    z-index: 9999;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee {
+    animation: marquee 30s linear infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* タイムライン */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 60px;
+    bottom: -40px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255, 107, 53, 0.5), rgba(78, 205, 196, 0.5));
+}
+
+.timeline-item:last-child::before {
+    display: none;
+}
+
+/* Masonry Grid */
+.masonry {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .masonry {
+        column-count: 1;
+    }
+}
+
+/* ロゴホバーエフェクト */
+.company-logo {
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.3s;
+}
+
+.company-logo:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* details/summary カスタムスタイル */
+details {
+    transition: all 0.3s;
+}
+
+details[open] {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+summary {
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: '+';
+    margin-right: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+details[open] summary::before {
+    content: '−';
+}
+
+/* 写真プレースホルダー */
+.photo-placeholder {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(78, 205, 196, 0.2));
+}
+
+.photo-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+}
