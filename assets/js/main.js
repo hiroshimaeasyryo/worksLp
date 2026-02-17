@@ -15,11 +15,12 @@
             const key = el.getAttribute('data-content');
             const val = getByPath(data, key);
             if (val == null) return;
-            // 画像用: images.xxx の場合は Data URL で img を表示
+            // 画像用: images.xxx の場合は Data URL / URL / 相対パス(ローカル) で img を表示
             if (key && key.startsWith('images.')) {
                 var inner = el.querySelector('.photo-placeholder-inner');
                 if (inner) {
-                    if (val && typeof val === 'string' && (val.startsWith('data:') || val.startsWith('http'))) {
+                    var isImageSrc = val && typeof val === 'string' && val.trim().length > 0;
+                    if (isImageSrc && (val.startsWith('data:') || val.startsWith('http') || val.startsWith('https') || val.indexOf('://') < 0)) {
                         inner.style.display = 'none';
                         var img = el.querySelector('img.photo-content-img');
                         if (!img) {
@@ -71,13 +72,72 @@
                 return '<li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>' + name + '</li>';
             }).join('');
         }
+        var companyLogos = document.getElementById('companyLogos');
+        if (companyLogos && data.companies && Array.isArray(data.companies)) {
+            companyLogos.innerHTML = data.companies.map(function (c) {
+                var nameEscaped = (c.name || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                var hasLogo = c.logo && typeof c.logo === 'string' && c.logo.trim().length > 0;
+                var logoImgHtml = '';
+                if (hasLogo) {
+                    var srcEscaped = c.logo.replace(/\\/g, '\\\\').replace(/"/g, '&quot;');
+                    logoImgHtml = '<img src="' + srcEscaped + '" alt="' + nameEscaped + '" class="company-logo-bg-img" onerror="this.style.display=\'none\';var s=this.parentElement.querySelector(\'.company-logo-fallback\');if(s)s.style.display=\'flex\';">';
+                }
+                var fallbackHtml = '<div class="company-logo-fallback text-4xl text-white/10 absolute inset-0 flex items-center justify-center" style="' + (hasLogo ? 'display:none' : 'display:flex') + '"><i class="fas fa-briefcase"></i></div>';
+
+                return '<div class="company-logo glass rounded-2xl overflow-hidden flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer relative group">' +
+                    logoImgHtml + fallbackHtml +
+                    '<div class="relative z-10 w-full h-full flex items-center justify-center bg-dark/20 group-hover:bg-dark/0 transition-colors duration-500">' +
+                    '<p class="company-name text-white/60 group-hover:text-white font-bold text-sm tracking-wider text-center px-4 transition-all duration-300">' + nameEscaped + '</p></div></div>';
+            }).join('');
+        }
+    }
+
+    /** モバイル時: ヒーロー背景を左端表示し、スクロールに応じて緩やかに右へパン */
+    function initHeroBgScroll() {
+        var hero = document.getElementById('hero-section');
+        var heroBg = document.querySelector('.hero-bg-placeholder .photo-content-img');
+        if (!hero || !heroBg) return;
+
+        var ticking = false;
+        var mobileQuery = window.matchMedia('(max-width: 768px)');
+        var panEndPercent = 45;
+
+        function updateHeroBgPosition() {
+            if (!mobileQuery.matches) {
+                heroBg.style.objectPosition = 'center center';
+                return;
+            }
+            var heroHeight = hero.offsetHeight;
+            var scrollY = window.scrollY || window.pageYOffset;
+            var progress = Math.min(1, Math.max(0, scrollY / heroHeight));
+            var x = progress * panEndPercent;
+            heroBg.style.objectPosition = x + '% 50%';
+        }
+
+        function onScrollOrResize() {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    updateHeroBgPosition();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+        updateHeroBgPosition();
     }
 
     function loadMainData() {
         fetch('data/main.json')
             .then(function (res) { return res.ok ? res.json() : null; })
-            .then(applyContent)
-            .catch(function () {});
+            .then(function (data) {
+                applyContent(data);
+                initHeroBgScroll();
+                return data;
+            })
+            .catch(function () { });
     }
 
     if (document.readyState === 'loading') {
