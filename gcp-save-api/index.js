@@ -46,8 +46,15 @@ exports.saveContent = (req, res) => {
     .then((r) => r.json())
     .then((file) => {
       const sha = file.sha || null;
-      const jsonBody = JSON.stringify(content, null, 2);
-      const base64 = Buffer.from(jsonBody, 'utf8').toString('base64');
+      let base64;
+      if (typeof content === 'object') {
+        const jsonBody = JSON.stringify(content, null, 2);
+        base64 = Buffer.from(jsonBody, 'utf8').toString('base64');
+      } else {
+        // 文字列の場合は既にBase64エンコードされているか、生のデータとみなす
+        // ここでは、data:プロトコルを含まない純粋なBase64文字列を期待する
+        base64 = content;
+      }
       return fetch(apiBase, {
         method: 'PUT',
         headers: {

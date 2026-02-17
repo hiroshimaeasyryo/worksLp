@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ヒュッテワークス | 仲間と見つける、自分の可能性</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,30 +38,34 @@
             }
         }
     </script>
-    
+
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body class="bg-dark text-white overflow-x-hidden">
     <!-- スクロールプログレスバー -->
     <div class="progress-bar" id="progressBar"></div>
-    
+
     <!-- ヘッダー -->
     <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-dark/80 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
             <div class="font-display text-2xl tracking-wider text-gradient">
                 HÜTTE WORKS
             </div>
-            <a href="#cta" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-sm hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/30">
+            <a href="#cta"
+                class="px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-sm hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/30">
                 説明会に参加
             </a>
         </div>
     </header>
 
     <!-- ヒーローセクション(写真あり) -->
-    <section class="min-h-screen flex items-start md:items-center justify-center relative overflow-hidden pt-24 md:pt-28" id="hero-section">
+    <section
+        class="min-h-screen flex items-start md:items-center justify-center relative overflow-hidden pt-24 md:pt-28 pb-16 md:pb-0"
+        id="hero-section">
         <!-- 背景写真プレースホルダー -->
         <div class="absolute inset-0">
-            <div class="absolute inset-0 photo-placeholder" data-content="images.heroBg">
+            <div class="absolute inset-0 photo-placeholder hero-bg-placeholder" data-content="images.heroBg">
                 <div class="photo-placeholder-inner absolute inset-0 flex items-center justify-center">
                     <div class="text-center">
                         <i class="fas fa-users text-[120px] text-white/20 mb-6"></i>
@@ -69,7 +76,7 @@
             <!-- グラデーションオーバーレイ -->
             <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/80 to-dark"></div>
         </div>
-        
+
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left w-full pt-8 md:pt-0">
             <div class="mb-8 overflow-hidden">
                 <h1 class="font-display text-[15vw] md:text-[12vw] lg:text-[180px] leading-none tracking-tight">
@@ -84,38 +91,44 @@
                     </div>
                 </h1>
             </div>
-            
+
             <div class="max-w-3xl mb-12" id="heroSubtitle" data-content-root="hero">
-                <p class="font-serif-display text-3xl md:text-5xl font-bold leading-tight text-white/90 mb-4" data-content="hero.catchcopy">
+                <p class="font-serif-display text-3xl md:text-5xl font-bold leading-tight text-white/90 mb-4"
+                    data-content="hero.catchcopy">
                     一人じゃ踏み出せない君へ。
                 </p>
                 <p class="font-sans text-xl md:text-2xl text-white/70" data-content="hero.subtext">
                     仲間と見つける、自分の可能性。
                 </p>
             </div>
-            
+
             <div class="flex flex-col md:flex-row gap-6" id="heroCTA">
-                <a href="#cta" class="group px-12 py-5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-lg hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/50 inline-flex items-center justify-center gap-3" data-content="hero.ctaPrimary">
+                <a href="#cta"
+                    class="group px-12 py-5 bg-gradient-to-r from-primary to-secondary rounded-full text-white font-bold text-lg hover:scale-105 transition-all duration-300 shadow-2xl shadow-primary/50 inline-flex items-center justify-center gap-3"
+                    data-content="hero.ctaPrimary">
                     説明会に参加する
                     <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                 </a>
-                <a href="#about" class="px-12 py-5 border-2 border-white/30 rounded-full text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center gap-3" data-content="hero.ctaSecondary">
+                <a href="#about"
+                    class="px-12 py-5 border-2 border-white/30 rounded-full text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center gap-3"
+                    data-content="hero.ctaSecondary">
                     詳しく見る
                     <i class="fas fa-chevron-down"></i>
                 </a>
             </div>
-        </div>
-        
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/50 text-xs uppercase tracking-widest animate-bounce">
-            <div class="flex flex-col items-center gap-2">
-                <span>Scroll</span>
-                <i class="fas fa-chevron-down"></i>
+            <!-- SCROLL案内: 常にボタン下・画面中央に配置 -->
+            <div class="w-full flex justify-center pt-8 pb-4 md:pt-10 md:pb-6">
+                <div
+                    class="text-white/50 text-xs uppercase tracking-widest animate-bounce flex flex-col items-center gap-2">
+                    <span>Scroll</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- マーキー風統計 -->
-    <section class="relative overflow-hidden bg-gradient-to-r from-primary to-secondary py-8">
+    <section class="relative overflow-hidden bg-gradient-to-r from-primary to-secondary py-4 md:py-6">
         <div class="flex whitespace-nowrap marquee" id="marqueeContainer">
             <div class="flex gap-16 px-8" id="marqueeStats">
                 <div class="flex items-center gap-4">
@@ -146,39 +159,48 @@
                 </p>
                 <p class="mt-6 text-white/60 text-xl">最初はみんな、同じ気持ちでした</p>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll>
-                    <div class="text-6xl mb-8 text-primary group-hover:scale-110 transition-transform">
-                        <i class="fas fa-compass"></i>
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer"
+                    data-scroll>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-6xl flex-shrink-0 text-primary group-hover:scale-110 transition-transform">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold leading-tight">
+                            やりたいことが<br>見つからない
+                        </h3>
                     </div>
-                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
-                        やりたいことが<br>見つからない
-                    </h3>
                     <p class="text-white/70 leading-relaxed">
                         将来が漠然と不安。自分に何が向いているのか分からない。このまま就活を迎えるのが怖い...
                     </p>
                 </div>
-                
-                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll style="transition-delay: 100ms;">
-                    <div class="text-6xl mb-8 text-secondary group-hover:scale-110 transition-transform">
-                        <i class="fas fa-shield-halved"></i>
+
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer"
+                    data-scroll style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-6xl flex-shrink-0 text-secondary group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold leading-tight">
+                            自信を持てる<br>経験がない
+                        </h3>
                     </div>
-                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
-                        自信を持てる<br>経験がない
-                    </h3>
                     <p class="text-white/70 leading-relaxed">
                         サークルも部活も中途半端。面接でアピールできる実績がない。自分の強みが分からない...
                     </p>
                 </div>
-                
-                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer" data-scroll style="transition-delay: 200ms;">
-                    <div class="text-6xl mb-8 text-accent group-hover:scale-110 transition-transform">
-                        <i class="fas fa-fire"></i>
+
+                <div class="problem-card glass rounded-3xl p-12 hover:scale-105 transition-all duration-500 group cursor-pointer"
+                    data-scroll style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-6xl flex-shrink-0 text-accent group-hover:scale-110 transition-transform">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-bold leading-tight">
+                            本気で頑張れる<br>場所がない
+                        </h3>
                     </div>
-                    <h3 class="font-heading text-3xl font-bold mb-6 leading-tight">
-                        本気で頑張れる<br>場所がない
-                    </h3>
                     <p class="text-white/70 leading-relaxed">
                         一人で頑張るのは続かない。熱中できるものがほしい。支え合える仲間がほしい...
                     </p>
@@ -190,7 +212,7 @@
     <!-- ソリューションセクション(写真なし - 抽象的ビジュアル) -->
     <section class="py-32 md:py-48 bg-gradient-to-b from-[#0F1419] to-dark relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/5"></div>
-        
+
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
             <div class="text-center mb-32" data-scroll>
                 <h2 class="font-display text-7xl md:text-9xl mb-6">
@@ -200,11 +222,12 @@
                     3つの理由
                 </p>
             </div>
-            
+
             <!-- Feature 1 -->
             <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center mb-40" data-scroll>
                 <div class="order-2 md:order-1">
-                    <div class="inline-block px-6 py-2 bg-primary/20 border border-primary/30 rounded-full text-primary font-bold text-sm mb-8 uppercase tracking-wider">
+                    <div
+                        class="inline-block px-6 py-2 bg-primary/20 border border-primary/30 rounded-full text-primary font-bold text-sm mb-8 uppercase tracking-wider">
                         Reason 01
                     </div>
                     <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
@@ -215,25 +238,40 @@
                     </p>
                 </div>
                 <div class="order-1 md:order-2 relative">
-                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div
+                        class="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 photo-placeholder reason-bg-placeholder rounded-3xl"
+                            data-content="images.reason01Bg">
+                            <div class="photo-placeholder-inner absolute inset-0 rounded-3xl"
+                                style="background: transparent;"></div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
                         <div class="font-display text-[200px] text-outline-thick relative z-10">01</div>
-                        <i class="fas fa-users-line absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Feature 2 -->
             <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center mb-40" data-scroll>
                 <div class="relative">
-                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-secondary/20 to-primary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div
+                        class="aspect-square rounded-3xl bg-gradient-to-br from-secondary/20 to-primary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 photo-placeholder reason-bg-placeholder rounded-3xl"
+                            data-content="images.reason02Bg">
+                            <div class="photo-placeholder-inner absolute inset-0 rounded-3xl"
+                                style="background: transparent;"></div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
                         <div class="font-display text-[200px] text-outline-thick relative z-10">02</div>
-                        <i class="fas fa-chart-line absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
                     </div>
                 </div>
                 <div>
-                    <div class="inline-block px-6 py-2 bg-secondary/20 border border-secondary/30 rounded-full text-secondary font-bold text-sm mb-8 uppercase tracking-wider">
+                    <div
+                        class="inline-block px-6 py-2 bg-secondary/20 border border-secondary/30 rounded-full text-secondary font-bold text-sm mb-8 uppercase tracking-wider">
                         Reason 02
                     </div>
                     <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
@@ -244,11 +282,12 @@
                     </p>
                 </div>
             </div>
-            
+
             <!-- Feature 3 -->
             <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center" data-scroll>
                 <div class="order-2 md:order-1">
-                    <div class="inline-block px-6 py-2 bg-accent/20 border border-accent/30 rounded-full text-accent font-bold text-sm mb-8 uppercase tracking-wider">
+                    <div
+                        class="inline-block px-6 py-2 bg-accent/20 border border-accent/30 rounded-full text-accent font-bold text-sm mb-8 uppercase tracking-wider">
                         Reason 03
                     </div>
                     <h3 class="font-serif-display text-5xl md:text-7xl font-bold leading-tight mb-8 text-white">
@@ -259,10 +298,17 @@
                     </p>
                 </div>
                 <div class="order-1 md:order-2 relative">
-                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-accent/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div
+                        class="aspect-square rounded-3xl bg-gradient-to-br from-accent/20 to-secondary/20 backdrop-blur-xl flex items-center justify-center relative overflow-hidden group">
+                        <div class="absolute inset-0 photo-placeholder reason-bg-placeholder rounded-3xl"
+                            data-content="images.reason03Bg">
+                            <div class="photo-placeholder-inner absolute inset-0 rounded-3xl"
+                                style="background: transparent;"></div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
                         <div class="font-display text-[200px] text-outline-thick relative z-10">03</div>
-                        <i class="fas fa-shield-heart absolute bottom-8 right-8 text-6xl text-white/20 group-hover:text-white/40 transition-colors"></i>
                     </div>
                 </div>
             </div>
@@ -286,7 +332,8 @@
             <div class="max-w-5xl mx-auto space-y-12">
                 <!-- 月曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                         <i class="fas fa-calendar-day text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
@@ -305,7 +352,8 @@
                                     <span>チーム全員参加 | オンライン/オフィス</span>
                                 </div>
                             </div>
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center" data-content="images.weeklyMon">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center"
+                                data-content="images.weeklyMon">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-users text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">MTGの様子</p>
@@ -317,12 +365,14 @@
 
                 <!-- 火曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
                         <i class="fas fa-lightbulb text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
                         <div class="grid md:grid-cols-3">
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1" data-content="images.weeklyTue">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1"
+                                data-content="images.weeklyTue">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-chalkboard text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">戦略会議</p>
@@ -348,7 +398,8 @@
 
                 <!-- 水曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
                         <i class="fas fa-phone text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
@@ -367,7 +418,8 @@
                                     <span>実践営業 | 1日20-30件コール目標</span>
                                 </div>
                             </div>
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center" data-content="images.weeklyWed">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center"
+                                data-content="images.weeklyWed">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-headset text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">営業中</p>
@@ -379,12 +431,14 @@
 
                 <!-- 木曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
                         <i class="fas fa-graduation-cap text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
                         <div class="grid md:grid-cols-3">
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1" data-content="images.weeklyThu">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1"
+                                data-content="images.weeklyThu">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-chalkboard-user text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">研修風景</p>
@@ -410,7 +464,8 @@
 
                 <!-- 金曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-primary rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-primary rounded-full flex items-center justify-center">
                         <i class="fas fa-handshake text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
@@ -418,18 +473,19 @@
                             <div class="md:col-span-2 p-8">
                                 <div class="flex items-center gap-4 mb-4">
                                     <span class="font-heading text-2xl font-bold text-secondary">金曜日</span>
-                                    <span class="text-white/60">14:00 - 18:00</span>
+                                    <span class="text-white/60">18:00 - 20:00</span>
                                 </div>
-                                <h4 class="font-heading text-xl font-bold text-white mb-3">フィールドセールス同行</h4>
+                                <h4 class="font-heading text-xl font-bold text-white mb-3">クライアント打合せ同行</h4>
                                 <p class="text-white/70 leading-relaxed mb-4">
-                                    社員と一緒にクライアント訪問。対面での提案スキルを実地で学びます。
+                                    社員とクライアント打合せに同行。対面での提案スキルを実地で学びます。
                                 </p>
                                 <div class="flex items-center gap-2 text-accent text-sm">
                                     <i class="fas fa-briefcase"></i>
                                     <span>商談同行 | コンサルティング体験</span>
                                 </div>
                             </div>
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center" data-content="images.weeklyFri">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center"
+                                data-content="images.weeklyFri">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-handshake text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">商談同行</p>
@@ -441,12 +497,14 @@
 
                 <!-- 金曜夜 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-secondary rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-accent to-secondary rounded-full flex items-center justify-center">
                         <i class="fas fa-beer text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl overflow-hidden">
                         <div class="grid md:grid-cols-3">
-                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1" data-content="images.weeklyFriNight">
+                            <div class="photo-placeholder md:col-span-1 aspect-video md:aspect-auto flex items-center justify-center order-2 md:order-1"
+                                data-content="images.weeklyFriNight">
                                 <div class="photo-placeholder-inner text-center p-4">
                                     <i class="fas fa-champagne-glasses text-4xl text-white/30 mb-2"></i>
                                     <p class="text-white/40 text-xs">打ち上げ</p>
@@ -472,7 +530,8 @@
 
                 <!-- 土曜日 -->
                 <div class="timeline-item relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                         <i class="fas fa-rocket text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl p-8">
@@ -493,7 +552,8 @@
 
                 <!-- 日曜日 -->
                 <div class="relative pl-20" data-scroll>
-                    <div class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute left-0 top-0 w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
                         <i class="fas fa-spa text-white text-xl"></i>
                     </div>
                     <div class="glass rounded-2xl p-8">
@@ -523,43 +583,7 @@
         </div>
     </section>
 
-    <!-- Behind the Scenes フォトギャラリー(そのまま維持) -->
-    <section class="py-32 md:py-48 bg-gradient-to-b from-[#0F1419] to-dark relative">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-24" data-scroll>
-                <h2 class="font-display text-8xl md:text-9xl mb-6 text-outline-thick">
-                    GALLERY
-                </h2>
-                <p class="font-serif-display text-4xl md:text-6xl font-bold text-white mb-6">
-                    オフィスの雰囲気
-                </p>
-                <p class="text-white/60 text-xl">リアルな日常をのぞいてみよう</p>
-            </div>
 
-            <!-- Masonry Grid -->
-            <div class="masonry" data-scroll>
-                <!-- Photo 1-10: 省略(前回と同じ) -->
-                <div class="masonry-item group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-2xl">
-                        <div class="aspect-[4/3] bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                            <div class="text-center">
-                                <i class="fas fa-users text-6xl text-white/30 mb-4"></i>
-                                <p class="text-white/60">週次MTGの様子</p>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h4 class="font-heading font-bold text-white mb-2">チーム全体ミーティング</h4>
-                                <p class="text-white/80 text-sm">目標達成に向けて全員で戦略を共有</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 他9枚の写真プレースホルダーも同様に配置(省略) -->
-            </div>
-        </div>
-    </section>
 
     <!-- Real Impact(写真なし - ロゴのみ) -->
     <section class="py-32 md:py-48 bg-[#0F1419] relative">
@@ -576,93 +600,26 @@
 
             <!-- 内定実績 -->
             <div class="mb-32" data-scroll>
-                <h3 class="font-heading text-3xl font-bold text-white mb-12 text-center flex items-center justify-center gap-4">
+                <h3
+                    class="font-heading text-3xl font-bold text-white mb-12 text-center flex items-center justify-center gap-4">
                     <i class="fas fa-building text-primary"></i>
                     内定獲得企業
                 </h3>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                    <!-- 企業ロゴ(プレースホルダー) -->
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">博報堂</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">電通</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">リクルート</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">楽天</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">ソフトバンク</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">マイナビ</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">サイバー<br>エージェント</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">アクセンチュア</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">野村総合<br>研究所</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-logo glass rounded-2xl p-8 flex items-center justify-center aspect-video hover:border-primary/50 border border-transparent transition-all cursor-pointer">
-                        <div class="text-center">
-                            <i class="fas fa-briefcase text-4xl text-white/40 mb-2"></i>
-                            <p class="text-white/60 text-sm font-bold">DeNA</p>
-                        </div>
-                    </div>
+
+                <div id="companyLogos" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <!-- 企業ロゴは data/main.json の companies を main.js で描画 -->
                 </div>
             </div>
 
             <!-- 出身大学 -->
             <div data-scroll>
-                <h3 class="font-heading text-3xl font-bold text-white mb-12 text-center flex items-center justify-center gap-4">
+                <h3
+                    class="font-heading text-3xl font-bold text-white mb-12 text-center flex items-center justify-center gap-4">
                     <i class="fas fa-graduation-cap text-secondary"></i>
                     参加者の出身大学
                     <span class="text-accent text-xl font-normal">※学歴不問</span>
                 </h3>
-                
+
                 <div class="glass rounded-3xl p-12">
                     <div class="grid md:grid-cols-3 gap-8">
                         <div>
@@ -705,7 +662,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <div>
                             <h4 class="font-heading font-bold text-secondary mb-6 flex items-center gap-3">
                                 <i class="fas fa-landmark"></i>
@@ -746,7 +703,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <div>
                             <h4 class="font-heading font-bold text-accent mb-6 flex items-center gap-3">
                                 <i class="fas fa-users"></i>
@@ -788,7 +745,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="mt-12 pt-8 border-t border-white/10 text-center">
                         <p class="text-white/60 leading-relaxed">
                             <i class="fas fa-heart text-primary mr-2"></i>
@@ -813,18 +770,21 @@
                 </p>
                 <p class="mt-8 text-white/60 text-xl">ここで変われた、という実感</p>
             </div>
-            
+
             <!-- メインストーリー(1名ピックアップ) -->
             <div class="mb-32" data-scroll>
                 <div class="gradient-border rounded-3xl overflow-hidden max-w-5xl mx-auto">
                     <div class="grid md:grid-cols-5 gap-0">
                         <!-- 左側: 写真エリア -->
-                        <div class="md:col-span-2 bg-gradient-to-br from-primary to-accent p-12 flex items-center justify-center">
+                        <div
+                            class="md:col-span-2 bg-gradient-to-br from-primary to-accent p-12 flex items-center justify-center">
                             <div class="text-center">
-                                <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center">
+                                <div
+                                    class="w-40 h-40 mx-auto mb-6 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center">
                                     <i class="fas fa-user-graduate text-7xl text-white/40"></i>
                                 </div>
-                                <div class="inline-block px-6 py-2 bg-white/20 rounded-full text-white font-bold text-sm mb-4 uppercase tracking-wider">
+                                <div
+                                    class="inline-block px-6 py-2 bg-white/20 rounded-full text-white font-bold text-sm mb-4 uppercase tracking-wider">
                                     <i class="fas fa-graduation-cap mr-2"></i>早稲田大学 3年
                                 </div>
                                 <h3 class="font-serif-display text-4xl font-bold text-white mb-2">
@@ -833,36 +793,40 @@
                                 <p class="text-white/80">インターン歴: 8ヶ月</p>
                             </div>
                         </div>
-                        
+
                         <!-- 右側: ストーリー -->
                         <div class="md:col-span-3 glass p-12">
                             <!-- Before/After -->
                             <div class="mb-8">
                                 <div class="flex items-start gap-6 mb-6">
-                                    <div class="flex-shrink-0 w-20 h-20 rounded-full bg-white/5 flex items-center justify-center">
+                                    <div
+                                        class="flex-shrink-0 w-20 h-20 rounded-full bg-white/5 flex items-center justify-center">
                                         <i class="fas fa-arrow-down text-white/40 text-2xl"></i>
                                     </div>
                                     <div>
-                                        <span class="inline-block px-4 py-1 bg-white/10 rounded-full text-white/60 text-sm font-bold mb-3">参加前</span>
+                                        <span
+                                            class="inline-block px-4 py-1 bg-white/10 rounded-full text-white/60 text-sm font-bold mb-3">参加前</span>
                                         <p class="font-serif-display text-2xl text-white/70 italic leading-relaxed">
                                             「部活を辞めて、何も打ち込めるものがない。就活が不安で仕方なかった...」
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="flex items-start gap-6">
-                                    <div class="flex-shrink-0 w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                                    <div
+                                        class="flex-shrink-0 w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                                         <i class="fas fa-star text-white text-2xl"></i>
                                     </div>
                                     <div>
-                                        <span class="inline-block px-4 py-1 bg-gradient-to-r from-primary to-accent rounded-full text-white text-sm font-bold mb-3">現在</span>
+                                        <span
+                                            class="inline-block px-4 py-1 bg-gradient-to-r from-primary to-accent rounded-full text-white text-sm font-bold mb-3">現在</span>
                                         <p class="font-serif-display text-2xl text-white font-bold leading-relaxed">
                                             「チームリーダーとして後輩を育成。自信を持って就活に臨めています!」
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- 成長の軌跡 -->
                             <div class="border-t border-white/10 pt-8">
                                 <h4 class="font-heading font-bold text-white mb-6 flex items-center gap-3">
@@ -878,7 +842,8 @@
                                         <span class="text-white/70">初受注達成(時給換算2,000円)</span>
                                     </div>
                                     <div class="flex items-center gap-4">
-                                        <span class="flex-shrink-0 w-24 font-heading font-bold text-secondary">3ヶ月目</span>
+                                        <span
+                                            class="flex-shrink-0 w-24 font-heading font-bold text-secondary">3ヶ月目</span>
                                         <div class="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
                                             <div class="h-full bg-gradient-to-r from-primary to-accent w-1/2"></div>
                                         </div>
@@ -900,7 +865,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- メッセージ -->
                             <div class="mt-8 p-6 bg-white/5 rounded-2xl border-l-4 border-primary">
                                 <p class="text-white/80 leading-relaxed italic">
@@ -911,17 +876,19 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- その他のストーリーカード -->
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group" data-scroll>
+                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group"
+                    data-scroll>
                     <div class="aspect-video bg-gradient-to-br from-primary to-accent relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fas fa-user-graduate text-8xl text-white/20"></i>
                         </div>
                     </div>
                     <div class="p-10">
-                        <div class="inline-block px-5 py-2 bg-primary/20 border border-primary rounded-full text-primary text-sm font-bold mb-6 uppercase tracking-wider">
+                        <div
+                            class="inline-block px-5 py-2 bg-primary/20 border border-primary rounded-full text-primary text-sm font-bold mb-6 uppercase tracking-wider">
                             <i class="fas fa-graduation-cap mr-2"></i>愛知学院大学 R.K
                         </div>
                         <blockquote class="font-serif-display text-2xl font-bold leading-snug text-white mb-6 italic">
@@ -936,15 +903,17 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group" data-scroll style="transition-delay: 100ms;">
+
+                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group"
+                    data-scroll style="transition-delay: 100ms;">
                     <div class="aspect-video bg-gradient-to-br from-secondary to-primary relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fas fa-trophy text-8xl text-white/20"></i>
                         </div>
                     </div>
                     <div class="p-10">
-                        <div class="inline-block px-5 py-2 bg-secondary/20 border border-secondary rounded-full text-secondary text-sm font-bold mb-6 uppercase tracking-wider">
+                        <div
+                            class="inline-block px-5 py-2 bg-secondary/20 border border-secondary rounded-full text-secondary text-sm font-bold mb-6 uppercase tracking-wider">
                             <i class="fas fa-graduation-cap mr-2"></i>早稲田大学 S
                         </div>
                         <blockquote class="font-serif-display text-2xl font-bold leading-snug text-white mb-6 italic">
@@ -959,15 +928,17 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group" data-scroll style="transition-delay: 200ms;">
+
+                <div class="story-card gradient-border rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 group"
+                    data-scroll style="transition-delay: 200ms;">
                     <div class="aspect-video bg-gradient-to-br from-accent to-secondary relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fas fa-handshake text-8xl text-white/20"></i>
                         </div>
                     </div>
                     <div class="p-10">
-                        <div class="inline-block px-5 py-2 bg-accent/20 border border-accent rounded-full text-accent text-sm font-bold mb-6 uppercase tracking-wider">
+                        <div
+                            class="inline-block px-5 py-2 bg-accent/20 border border-accent rounded-full text-accent text-sm font-bold mb-6 uppercase tracking-wider">
                             <i class="fas fa-graduation-cap mr-2"></i>佐賀大学 W
                         </div>
                         <blockquote class="font-serif-display text-2xl font-bold leading-snug text-white mb-6 italic">
@@ -1004,13 +975,14 @@
                 <h3 class="font-heading text-3xl font-bold text-white mb-12 text-center">
                     選考の流れ
                 </h3>
-                
+
                 <div class="max-w-5xl mx-auto">
                     <div class="grid md:grid-cols-4 gap-6">
                         <!-- STEP 1 -->
                         <div class="relative">
                             <div class="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                                     <span class="font-display text-3xl text-white">1</span>
                                 </div>
                                 <h4 class="font-heading font-bold text-xl text-white mb-3">LINE登録</h4>
@@ -1028,7 +1000,8 @@
                         <!-- STEP 2 -->
                         <div class="relative">
                             <div class="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center">
                                     <span class="font-display text-3xl text-white">2</span>
                                 </div>
                                 <h4 class="font-heading font-bold text-xl text-white mb-3">カジュアル面談</h4>
@@ -1046,7 +1019,8 @@
                         <!-- STEP 3 -->
                         <div class="relative">
                             <div class="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
                                     <span class="font-display text-3xl text-white">3</span>
                                 </div>
                                 <h4 class="font-heading font-bold text-xl text-white mb-3">最終面談</h4>
@@ -1063,8 +1037,10 @@
 
                         <!-- STEP 4 -->
                         <div>
-                            <div class="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 border-2 border-accent">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                            <div
+                                class="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 border-2 border-accent">
+                                <div
+                                    class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
                                     <i class="fas fa-rocket text-white text-2xl"></i>
                                 </div>
                                 <h4 class="font-heading font-bold text-xl text-white mb-3">活動開始!</h4>
@@ -1077,7 +1053,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mt-12 text-center">
                     <p class="text-white/60 leading-relaxed">
                         <i class="fas fa-shield-check text-accent mr-2"></i>
@@ -1092,12 +1068,13 @@
                 <h3 class="font-heading text-3xl font-bold text-white mb-12 text-center">
                     募集要項
                 </h3>
-                
+
                 <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
                     <!-- 対象 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-users text-primary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1113,7 +1090,8 @@
                     <!-- 勤務形態 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-calendar-alt text-secondary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1129,7 +1107,8 @@
                     <!-- 報酬 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-yen-sign text-accent text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1146,7 +1125,8 @@
                     <!-- 勤務地 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-location-dot text-primary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1162,7 +1142,8 @@
                     <!-- 福利厚生 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-gift text-secondary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1180,7 +1161,8 @@
                     <!-- 研修制度 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-book-open text-accent text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1197,7 +1179,8 @@
                     <!-- 募集人数 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-user-plus text-primary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1213,7 +1196,8 @@
                     <!-- 選考方法 -->
                     <div class="glass rounded-2xl p-8">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-laptop text-secondary text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1230,7 +1214,8 @@
                     <!-- こんな人が向いています -->
                     <div class="glass rounded-2xl p-8 md:col-span-2">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-star text-accent text-xl"></i>
                             </div>
                             <div class="flex-1">
@@ -1269,224 +1254,237 @@
         </div>
     </section>
 
-            <!-- 🆕 拠点詳細(折りたたみ式) -->
-            <div class="mt-24" data-scroll>
-                <details class="glass rounded-3xl overflow-hidden transition-all">
-                    <summary class="p-8 font-heading text-2xl font-bold text-white flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
-                        <span class="flex items-center gap-4">
-                            <i class="fas fa-map-marker-alt text-primary"></i>
-                            各拠点の詳細を見る
-                        </span>
-                    </summary>
-                    
-                    <div class="p-8 border-t border-white/10">
-                        <div class="grid md:grid-cols-2 gap-12">
-                            <!-- 東京拠点 -->
-                            <div class="glass rounded-2xl p-8">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-building text-primary text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-heading text-2xl font-bold text-white">東京拠点</h4>
-                                        <p class="text-accent text-sm">lifework space KANPAI Hütte</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-map-pin text-primary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">住所</p>
-                                            <p class="text-white/60 text-sm">東京都新宿区西新宿7-16-13<br>第2手塚ビル4F</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-train text-secondary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">アクセス</p>
-                                            <p class="text-white/60 text-sm">各線新宿駅 徒歩7分<br>JR総武線大久保駅 徒歩5分<br>西武新宿線 徒歩4分</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-phone text-accent mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">電話</p>
-                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- 拠点写真プレースホルダー -->
-                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center" data-content="images.locationTokyo">
-                                    <div class="photo-placeholder-inner text-center">
-                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
-                                        <p class="text-white/40 text-sm">東京拠点の外観/内観</p>
-                                    </div>
+    <!-- 🆕 拠点詳細(折りたたみ式) -->
+    <div class="mt-24" data-scroll>
+        <details class="glass rounded-3xl overflow-hidden transition-all">
+            <summary
+                class="p-8 font-heading text-2xl font-bold text-white flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
+                <span class="flex items-center gap-4">
+                    <i class="fas fa-map-marker-alt text-primary"></i>
+                    各拠点の詳細を見る
+                </span>
+            </summary>
+
+            <div class="p-8 border-t border-white/10">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- 東京拠点 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-building text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading text-2xl font-bold text-white">東京拠点</h4>
+                                <p class="text-accent text-sm">lifework space KANPAI Hütte</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-map-pin text-primary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">住所</p>
+                                    <p class="text-white/60 text-sm">東京都新宿区西新宿7-16-13<br>第2手塚ビル4F</p>
                                 </div>
                             </div>
-
-                            <!-- 名古屋拠点 -->
-                            <div class="glass rounded-2xl p-8">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <div class="w-16 h-16 bg-secondary/20 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-building text-secondary text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-heading text-2xl font-bold text-white">名古屋拠点</h4>
-                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@名古屋</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-map-pin text-primary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">住所</p>
-                                            <p class="text-white/60 text-sm">愛知県名古屋市千種区今池1-15-14<br>ハウス108今池公園202</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-train text-secondary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">アクセス</p>
-                                            <p class="text-white/60 text-sm">各線今池駅 徒歩4分</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-phone text-accent mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">電話</p>
-                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center" data-content="images.locationNagoya">
-                                    <div class="photo-placeholder-inner text-center">
-                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
-                                        <p class="text-white/40 text-sm">名古屋拠点の外観/内観</p>
-                                    </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-train text-secondary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">アクセス</p>
+                                    <p class="text-white/60 text-sm">各線新宿駅 徒歩7分<br>JR総武線大久保駅 徒歩5分<br>西武新宿線 徒歩4分</p>
                                 </div>
                             </div>
-
-                            <!-- 新潟拠点 -->
-                            <div class="glass rounded-2xl p-8">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-building text-accent text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-heading text-2xl font-bold text-white">新潟拠点</h4>
-                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@新潟</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-map-pin text-primary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">住所</p>
-                                            <p class="text-white/60 text-sm">新潟県新潟市中央区東大通2-2-18<br>タチバナビル501B</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-train text-secondary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">アクセス</p>
-                                            <p class="text-white/60 text-sm">新潟駅 徒歩5分</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-phone text-accent mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">電話</p>
-                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center" data-content="images.locationNiigata">
-                                    <div class="photo-placeholder-inner text-center">
-                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
-                                        <p class="text-white/40 text-sm">新潟拠点の外観/内観</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 福岡拠点 -->
-                            <div class="glass rounded-2xl p-8">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-building text-primary text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-heading text-2xl font-bold text-white">福岡拠点</h4>
-                                        <p class="text-accent text-sm">lifework space KANPAI Hütte@福岡</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="space-y-4 mb-6">
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-map-pin text-primary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">住所</p>
-                                            <p class="text-white/60 text-sm">福岡県福岡市博多区御供所町1-18<br>リビング博多ビル7C</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-train text-secondary mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">アクセス</p>
-                                            <p class="text-white/60 text-sm">福岡市地下鉄空港線 祇園駅 徒歩1分</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <i class="fas fa-phone text-accent mt-1"></i>
-                                        <div>
-                                            <p class="text-white/80 font-medium">電話</p>
-                                            <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center" data-content="images.locationFukuoka">
-                                    <div class="photo-placeholder-inner text-center">
-                                        <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
-                                        <p class="text-white/40 text-sm">福岡拠点の外観/内観</p>
-                                    </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-phone text-accent mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">電話</p>
+                                    <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 地図埋め込み説明 -->
-                        <div class="mt-8 p-6 bg-white/5 rounded-2xl border-l-4 border-accent">
-                            <p class="text-white/70 leading-relaxed flex items-start gap-3">
-                                <i class="fas fa-info-circle text-accent mt-1"></i>
-                                <span>詳細な地図は説明会時にご案内します。各拠点へのアクセスや周辺環境についてもお気軽にお問い合わせください。</span>
-                            </p>
+                        <!-- 拠点写真プレースホルダー -->
+                        <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center"
+                            data-content="images.locationTokyo">
+                            <div class="photo-placeholder-inner text-center">
+                                <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                <p class="text-white/40 text-sm">東京拠点の外観/内観</p>
+                            </div>
                         </div>
                     </div>
-                </details>
+
+                    <!-- 名古屋拠点 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-secondary/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-building text-secondary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading text-2xl font-bold text-white">名古屋拠点</h4>
+                                <p class="text-accent text-sm">lifework space KANPAI Hütte@名古屋</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-map-pin text-primary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">住所</p>
+                                    <p class="text-white/60 text-sm">愛知県名古屋市千種区今池1-15-14<br>ハウス108今池公園202</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-train text-secondary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">アクセス</p>
+                                    <p class="text-white/60 text-sm">各線今池駅 徒歩4分</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-phone text-accent mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">電話</p>
+                                    <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center"
+                            data-content="images.locationNagoya">
+                            <div class="photo-placeholder-inner text-center">
+                                <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                <p class="text-white/40 text-sm">名古屋拠点の外観/内観</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 新潟拠点 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-building text-accent text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading text-2xl font-bold text-white">新潟拠点</h4>
+                                <p class="text-accent text-sm">lifework space KANPAI Hütte@新潟</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-map-pin text-primary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">住所</p>
+                                    <p class="text-white/60 text-sm">新潟県新潟市中央区東大通2-2-18<br>タチバナビル501B</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-train text-secondary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">アクセス</p>
+                                    <p class="text-white/60 text-sm">新潟駅 徒歩5分</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-phone text-accent mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">電話</p>
+                                    <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center"
+                            data-content="images.locationNiigata">
+                            <div class="photo-placeholder-inner text-center">
+                                <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                <p class="text-white/40 text-sm">新潟拠点の外観/内観</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 福岡拠点 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-building text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading text-2xl font-bold text-white">福岡拠点</h4>
+                                <p class="text-accent text-sm">lifework space KANPAI Hütte@福岡</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-map-pin text-primary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">住所</p>
+                                    <p class="text-white/60 text-sm">福岡県福岡市博多区御供所町1-18<br>リビング博多ビル7C</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-train text-secondary mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">アクセス</p>
+                                    <p class="text-white/60 text-sm">福岡市地下鉄空港線 祇園駅 徒歩1分</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-phone text-accent mt-1"></i>
+                                <div>
+                                    <p class="text-white/80 font-medium">電話</p>
+                                    <p class="text-white/60 text-sm">06-6371-6131(代表)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="photo-placeholder rounded-xl aspect-video flex items-center justify-center"
+                            data-content="images.locationFukuoka">
+                            <div class="photo-placeholder-inner text-center">
+                                <i class="fas fa-image text-4xl text-white/30 mb-2"></i>
+                                <p class="text-white/40 text-sm">福岡拠点の外観/内観</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 地図埋め込み説明 -->
+                <div class="mt-8 p-6 bg-white/5 rounded-2xl border-l-4 border-accent">
+                    <p class="text-white/70 leading-relaxed flex items-start gap-3">
+                        <i class="fas fa-info-circle text-accent mt-1"></i>
+                        <span>詳細な地図は説明会時にご案内します。各拠点へのアクセスや周辺環境についてもお気軽にお問い合わせください。</span>
+                    </p>
+                </div>
             </div>
-        </div>
+        </details>
+    </div>
+    </div>
     </section>
 
     <!-- 最終CTA -->
-    <section class="py-32 md:py-48 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden" id="cta">
+    <section class="py-32 md:py-48 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden"
+        id="cta">
         <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_70%_50%,rgba(0,0,0,0.1),transparent_50%)]"></div>
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]">
+            </div>
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_70%_50%,rgba(0,0,0,0.1),transparent_50%)]">
+            </div>
         </div>
-        
+
         <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center" data-content-root="cta">
-            <h2 class="font-display text-6xl md:text-8xl leading-tight mb-8 text-white" data-scroll data-content="cta.title" data-content-br="true">
+            <h2 class="font-display text-6xl md:text-8xl leading-tight mb-8 text-white" data-scroll
+                data-content="cta.title" data-content-br="true">
                 まずは説明会で、<br>話を聞いてみませんか?
             </h2>
             <p class="text-2xl md:text-3xl text-white/90 mb-16 font-sans" data-scroll data-content="cta.description">
                 「話を聞いてみるだけ」でOKです。気軽にご参加ください。
             </p>
-            <a href="#" class="inline-flex items-center gap-4 px-16 py-6 bg-white text-primary rounded-full font-heading font-black text-xl hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/50 group cta-line-link" data-scroll data-content="cta.lineLabel" data-content-href="cta.lineUrl">
+            <a href="#"
+                class="inline-flex items-center gap-4 px-16 py-6 bg-white text-primary rounded-full font-heading font-black text-xl hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/50 group cta-line-link"
+                data-scroll data-content="cta.lineLabel" data-content-href="cta.lineUrl">
                 公式LINEで説明会に申し込む
                 <i class="fab fa-line text-3xl group-hover:rotate-12 transition-transform"></i>
             </a>
@@ -1513,9 +1511,15 @@
                         <i class="fas fa-link"></i>リンク
                     </h4>
                     <ul class="space-y-3">
-                        <li><a href="https://workaslife-inc.com/" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>会社概要</a></li>
-                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>プライバシーポリシー</a></li>
-                        <li><a href="#" class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i>特定商取引法</a></li>
+                        <li><a href="https://workaslife-inc.com/"
+                                class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i
+                                    class="fas fa-angle-right text-xs"></i>会社概要</a></li>
+                        <li><a href="#"
+                                class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i
+                                    class="fas fa-angle-right text-xs"></i>プライバシーポリシー</a></li>
+                        <li><a href="#"
+                                class="text-white/60 hover:text-primary transition-colors flex items-center gap-2"><i
+                                    class="fas fa-angle-right text-xs"></i>特定商取引法</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1523,10 +1527,14 @@
                         <i class="fas fa-location-dot"></i>拠点
                     </h4>
                     <ul class="space-y-3" id="footerLocations">
-                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>東京(新宿)</li>
-                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>名古屋(今池)</li>
-                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>新潟(新潟駅)</li>
-                        <li class="text-white/60 flex items-center gap-3"><i class="fas fa-building text-primary"></i>福岡(祇園)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i
+                                class="fas fa-building text-primary"></i>東京(新宿)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i
+                                class="fas fa-building text-primary"></i>名古屋(今池)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i
+                                class="fas fa-building text-primary"></i>新潟(新潟駅)</li>
+                        <li class="text-white/60 flex items-center gap-3"><i
+                                class="fas fa-building text-primary"></i>福岡(祇園)</li>
                     </ul>
                 </div>
             </div>
@@ -1538,4 +1546,5 @@
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
