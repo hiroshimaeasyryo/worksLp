@@ -21,7 +21,11 @@
     "locationFukuoka": "",
     "reason01Bg": "assets/images/reason01.png",
     "reason02Bg": "assets/images/reason02.png",
-    "reason03Bg": "assets/images/reason03.png"
+    "reason03Bg": "assets/images/reason03.png",
+    "voice01": "assets/images/participants/voice01.jpg",
+    "voice02": "assets/images/participants/voice02.jpg",
+    "voice03": "assets/images/participants/voice03.jpg",
+    "voice04": "assets/images/participants/voice04.jpg"
   },
   "marquee": {
     "stats": [
